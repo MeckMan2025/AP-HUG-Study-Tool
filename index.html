@@ -1005,27 +1005,22 @@
       .sidebar { width: 240px; }
     }
 
-    .site-footer {
-      position: fixed;
-      bottom: 0;
-      right: 0;
-      padding: 6px 16px;
+    .sidebar-credit {
+      padding: 14px 20px;
       font-size: 0.75rem;
       color: var(--text-muted);
-      background: var(--white-80);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      border-top-left-radius: 10px;
-      z-index: 999;
+      text-align: center;
+      border-top: 1px solid var(--white-50);
+      flex-shrink: 0;
     }
 
-    .site-footer a {
+    .sidebar-credit a {
       color: var(--pastel-pink-dark);
       text-decoration: underline;
       font-weight: 600;
     }
 
-    .site-footer a:hover {
+    .sidebar-credit a:hover {
       color: var(--pastel-purple-dark);
     }
 
@@ -1347,6 +1342,7 @@
         <div id="detail-items"></div>
       </div>
     </div>
+    <div class="sidebar-credit">Created By <a href="https://github.com/MeckMan2025" target="_blank" rel="noopener">Kayden &lt;3</a></div>
   </div>
 
   <header>
@@ -1368,8 +1364,6 @@
     </div>
     <div id="map"></div>
   </div>
-  <footer class="site-footer">Created By <a href="https://github.com/MeckMan2025" target="_blank" rel="noopener">Kayden &lt;3</a></footer>
-
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script>
     // ── State ──
