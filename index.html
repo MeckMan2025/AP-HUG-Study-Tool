@@ -1028,13 +1028,13 @@
       color: var(--pastel-purple-dark);
     }
 
-    /* ── Review flashcard styles ── */
+    /* ── Review FRQ + MC styles ── */
     .review-view {
       flex: 1;
       display: flex;
       flex-direction: column;
       overflow-y: auto;
-      padding: 24px;
+      padding: 24px 20px;
       gap: 20px;
     }
 
@@ -1046,218 +1046,361 @@
     .review-header .review-title {
       font-size: 1.3rem;
       font-weight: 700;
-      color: var(--text-primary);
+      background: linear-gradient(135deg, var(--pastel-green-dark), var(--pastel-blue-dark));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 4px;
     }
 
-    .review-header .review-category {
-      font-size: 0.9rem;
+    .review-header .review-subtitle {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .review-passage {
+      background: var(--white-90);
+      backdrop-filter: blur(12px);
+      border-radius: 16px;
+      padding: 24px 24px 24px 28px;
+      border-left: 5px solid var(--pastel-green);
+      box-shadow: var(--shadow-sm);
+      font-size: 0.92rem;
+      line-height: 1.75;
       color: var(--text-secondary);
-      margin-top: 4px;
+      max-width: 750px;
+      margin: 0 auto;
+      width: 100%;
+      white-space: pre-line;
     }
 
-    .review-levels {
+    .review-section-tabs {
       display: flex;
       gap: 8px;
       justify-content: center;
-      flex-wrap: wrap;
+      max-width: 750px;
+      margin: 0 auto;
+      width: 100%;
     }
 
-    .review-level-box {
-      background: var(--white-80);
+    .review-section-tab {
+      flex: 1;
+      padding: 12px 20px;
       border: 2px solid var(--white-50);
-      border-radius: 10px;
-      padding: 8px 14px;
-      text-align: center;
-      min-width: 56px;
+      background: var(--white-80);
+      color: var(--text-secondary);
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      border-radius: 14px;
       transition: all 0.2s;
+      text-align: center;
     }
 
-    .review-level-box.active {
+    .review-section-tab:hover {
+      background: var(--pastel-green);
+      border-color: var(--pastel-green);
+    }
+
+    .review-section-tab.active {
+      background: var(--pastel-green);
+      border-color: var(--pastel-green-dark);
+      color: var(--text-primary);
+      font-weight: 700;
+    }
+
+    .review-tab-content {
+      max-width: 750px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* FRQ styles */
+    .frq-card {
+      background: var(--white-90);
+      backdrop-filter: blur(12px);
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--white-50);
+      margin-bottom: 16px;
+    }
+
+    .frq-prompt {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
+
+    .frq-tip {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      font-style: italic;
+      margin-bottom: 12px;
+    }
+
+    .frq-reveal-btn {
+      display: inline-block;
+      padding: 10px 24px;
+      border: none;
+      background: var(--pastel-green);
+      color: var(--text-primary);
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 700;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .frq-reveal-btn:hover {
+      background: var(--pastel-green-dark);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .frq-model {
+      margin-top: 16px;
+      padding: 18px 20px;
+      background: rgba(143, 213, 186, 0.12);
+      border-left: 4px solid var(--pastel-green-dark);
+      border-radius: 0 12px 12px 0;
+      font-size: 0.9rem;
+      line-height: 1.65;
+      color: var(--text-secondary);
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.4s ease, opacity 0.3s ease, margin-top 0.3s ease;
+    }
+
+    .frq-model.revealed {
+      max-height: 600px;
+      opacity: 1;
+    }
+
+    .frq-model-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--pastel-green-dark);
+      margin-bottom: 8px;
+    }
+
+    /* MCQ styles (reuses rq patterns) */
+    .mcq-card {
+      background: var(--white-90);
+      backdrop-filter: blur(12px);
+      border-radius: 20px;
+      padding: 28px;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--white-50);
+      margin-bottom: 16px;
+    }
+
+    .mcq-question {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    .mcq-options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .mcq-option {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 18px;
+      border: 2px solid rgba(0,0,0,0.06);
+      background: var(--white-80);
+      border-radius: 14px;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-primary);
+      transition: all 0.2s;
+      text-align: left;
+      width: 100%;
+    }
+
+    .mcq-option:hover:not(.answered) {
+      border-color: var(--pastel-green-dark);
+      background: var(--pastel-green);
+      transform: translateX(4px);
+    }
+
+    .mcq-option .option-letter {
+      width: 28px;
+      height: 28px;
+      border-radius: 9px;
+      background: var(--white-90);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      flex-shrink: 0;
+    }
+
+    .mcq-option.correct {
       border-color: var(--pastel-green-dark);
       background: var(--pastel-green);
     }
 
-    .review-level-box .level-label {
-      font-size: 0.7rem;
-      font-weight: 600;
-      color: var(--text-secondary);
-      text-transform: uppercase;
+    .mcq-option.correct .option-letter {
+      background: var(--pastel-green-dark);
+      color: white;
     }
 
-    .review-level-box .level-count {
-      font-size: 1.1rem;
-      font-weight: 700;
+    .mcq-option.wrong {
+      border-color: var(--pastel-pink-dark);
+      background: var(--pastel-pink);
+    }
+
+    .mcq-option.wrong .option-letter {
+      background: var(--pastel-pink-dark);
+      color: white;
+    }
+
+    .mcq-option.answered {
+      cursor: default;
+      opacity: 0.7;
+    }
+
+    .mcq-option.correct.answered,
+    .mcq-option.wrong.answered {
+      opacity: 1;
+    }
+
+    .mcq-explain {
+      margin-top: 14px;
+      padding: 14px 18px;
+      background: rgba(143, 213, 186, 0.12);
+      border-left: 4px solid var(--pastel-green-dark);
+      border-radius: 0 12px 12px 0;
+      font-size: 0.85rem;
+      line-height: 1.55;
+      color: var(--text-secondary);
+    }
+
+    .mcq-next-btn {
+      display: block;
+      margin: 20px auto 0;
+      padding: 12px 32px;
+      border: none;
+      background: var(--pastel-green);
       color: var(--text-primary);
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 700;
+      border-radius: 14px;
+      cursor: pointer;
+      transition: all 0.2s;
+      box-shadow: var(--shadow-md);
+    }
+
+    .mcq-next-btn:hover {
+      background: var(--pastel-green-dark);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .review-progress {
+      text-align: center;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 16px;
     }
 
     .review-progress-bar {
       width: 100%;
-      height: 8px;
-      background: var(--white-50);
-      border-radius: 4px;
+      height: 6px;
+      background: var(--white-80);
+      border-radius: 3px;
+      margin-top: 8px;
       overflow: hidden;
     }
 
     .review-progress-fill {
       height: 100%;
       background: linear-gradient(90deg, var(--pastel-green), var(--pastel-green-dark));
-      border-radius: 4px;
-      transition: width 0.4s ease;
+      border-radius: 3px;
+      transition: width 0.3s ease;
     }
 
-    .review-card-area {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex: 1;
-      perspective: 1000px;
-      min-height: 280px;
-    }
-
-    .review-card-wrapper {
-      width: 100%;
-      max-width: 520px;
-      min-height: 260px;
-      position: relative;
-      cursor: pointer;
-      transition: transform 0.6s;
-      transform-style: preserve-3d;
-    }
-
-    .review-card-wrapper.flipped {
-      transform: rotateY(180deg);
-    }
-
-    .review-card-front, .review-card-back {
-      position: absolute;
-      inset: 0;
-      backface-visibility: hidden;
-      border-radius: 16px;
-      padding: 28px 24px;
-      background: var(--white-90);
-      backdrop-filter: blur(10px);
-      box-shadow: var(--shadow-lg);
-      display: flex;
-      flex-direction: column;
-    }
-
-    .review-card-front {
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-    }
-
-    .review-card-front .term-text {
-      font-size: 1.6rem;
-      font-weight: 700;
-      color: var(--text-primary);
-    }
-
-    .review-card-front .flip-hint {
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      margin-top: 16px;
-    }
-
-    .review-card-back {
-      transform: rotateY(180deg);
-      gap: 10px;
-      overflow-y: auto;
-    }
-
-    .review-card-back .def-text {
-      font-size: 1.05rem;
-      font-weight: 600;
-      color: var(--text-primary);
-      line-height: 1.5;
-    }
-
-    .review-card-back .card-section {
-      font-size: 0.85rem;
-      color: var(--text-secondary);
-      line-height: 1.5;
-    }
-
-    .review-card-back .card-section strong {
-      color: var(--text-primary);
-    }
-
-    .review-card-back .card-section ul {
-      margin: 2px 0 0 16px;
-    }
-
-    .review-card-back .card-section ul li {
-      margin-bottom: 2px;
-    }
-
-    .review-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      margin-top: 12px;
-    }
-
-    .review-btn {
-      border: none;
-      padding: 10px 28px;
-      border-radius: 10px;
-      font-weight: 600;
-      font-size: 0.9rem;
-      cursor: pointer;
-      transition: all 0.2s;
-      font-family: inherit;
-    }
-
-    .review-btn.got-it {
-      background: var(--pastel-green);
-      color: var(--text-primary);
-    }
-
-    .review-btn.got-it:hover {
-      background: var(--pastel-green-dark);
-    }
-
-    .review-btn.study-again {
-      background: var(--pastel-pink);
-      color: var(--text-primary);
-    }
-
-    .review-btn.study-again:hover {
-      background: var(--pastel-pink-dark);
-    }
-
-    .review-done {
+    .mcq-results {
       text-align: center;
       padding: 40px 20px;
     }
 
-    .review-done h2 {
-      font-size: 1.4rem;
-      font-weight: 700;
+    .mcq-results .mcq-score {
+      font-size: 3rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--pastel-green-dark), var(--pastel-blue-dark));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
       margin-bottom: 8px;
     }
 
-    .review-done p {
-      font-size: 0.95rem;
+    .mcq-results .mcq-score-label {
+      font-size: 1rem;
       color: var(--text-secondary);
+      font-weight: 600;
+      margin-bottom: 24px;
     }
 
-    .review-restart-btn {
-      margin-top: 16px;
+    .mcq-retry-btn {
+      padding: 12px 28px;
       border: none;
-      padding: 10px 24px;
-      border-radius: 10px;
       background: var(--pastel-green);
       color: var(--text-primary);
-      font-weight: 600;
-      font-size: 0.9rem;
-      cursor: pointer;
       font-family: inherit;
-      transition: background 0.2s;
+      font-size: 0.9rem;
+      font-weight: 700;
+      border-radius: 14px;
+      cursor: pointer;
+      transition: all 0.2s;
+      box-shadow: var(--shadow-md);
+      margin: 0 6px;
     }
 
-    .review-restart-btn:hover {
+    .mcq-retry-btn:hover {
       background: var(--pastel-green-dark);
+      transform: translateY(-2px);
+    }
+
+    .mcq-back-btn {
+      padding: 12px 28px;
+      border: none;
+      background: var(--pastel-blue);
+      color: var(--text-primary);
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 700;
+      border-radius: 14px;
+      cursor: pointer;
+      transition: all 0.2s;
+      box-shadow: var(--shadow-md);
+      margin: 0 6px;
+    }
+
+    .mcq-back-btn:hover {
+      background: var(--pastel-blue-dark);
+      transform: translateY(-2px);
     }
   </style>
 </head>
@@ -2238,67 +2381,99 @@
     const detailSubtitle = document.getElementById('detail-subtitle');
     const detailItems = document.getElementById('detail-items');
 
-    // ── Review Flashcard Data ──
-    const reviewData = {
+    // ── Review Content Data (FRQ + MC) ──
+    const reviewContentData = {
       '6': {
-        'Urbanization and Migration': [
-          { term:'Urbanization', definition:'The increasing percentage of people living in cities', example:'Lagos, Nigeria experiencing rapid population growth', causes:['Rural-to-urban migration','Industrialization','Job opportunities'], effects:['Overcrowding','Infrastructure strain','Growth of informal settlements'], connections:['Migration','Megacities'] },
-          { term:'Megacities', definition:'Cities with over 10 million people', example:'Tokyo, Japan', causes:['Migration','Economic opportunities','Industrialization'], effects:['Traffic congestion','Pollution','Housing shortages'], connections:['Urbanization'] },
-          { term:'Metacities', definition:'Cities with over 20 million people', example:'Tokyo, Japan', causes:['Same drivers as megacities but at extreme scale'], effects:['Extreme overcrowding','Infrastructure challenges'], connections:['Megacities'] },
-          { term:'Periphery countries', definition:'Less developed countries with low industrialization', example:'Nigeria', causes:['Limited resources','Colonial history'], effects:['High urban growth','Poverty'], connections:['Urbanization'] },
-          { term:'Semi-periphery countries', definition:'Countries between developed and developing', example:'Brazil', causes:['Industrializing economies'], effects:['Mixed urban development'], connections:['Core-periphery model'] },
-          { term:'Core countries', definition:'Highly developed countries', example:'United States', causes:['Strong economies'], effects:['Slower urban growth'], connections:['Globalization'] }
-        ],
-        'City Structure and Models': [
-          { term:'Urban hierarchy', definition:'Ranking of cities by size and function', example:'NYC > smaller cities', connections:['Rank-size rule'] },
-          { term:'Rank-size rule', definition:'City sizes follow a predictable pattern where the nth city is 1/n the size of the largest', example:'U.S. city distribution', connections:['Urban hierarchy'] },
-          { term:'Primate city', definition:'One city that dominates a country, more than twice the size of the second largest', example:'Paris, France', connections:['Uneven development'] },
-          { term:'Gravity model', definition:'Interaction between places depends on population size and distance', example:'NYC and Philadelphia interaction', connections:['Migration'] },
-          { term:'Central place theory', definition:'Cities are distributed to serve surrounding areas with goods and services', example:'Retail distribution patterns', connections:['Threshold','Range'] },
-          { term:'Threshold', definition:'Minimum number of customers needed to support a business or service', connections:['Central place theory'] },
-          { term:'Range', definition:'Maximum distance people are willing to travel for a good or service', connections:['Central place theory'] },
-          { term:'CBD', definition:'The commercial and business center of a city with highest land values', example:'Manhattan, New York', effects:['High land value','Dense commercial activity'], connections:['Bid-rent theory'] },
-          { term:'Bid-rent theory', definition:'Land value decreases with distance from the city center', connections:['CBD'] },
-          { term:'Concentric zone model', definition:'Burgess model showing city growth in concentric rings outward from the CBD', connections:['Sector model','Multiple nuclei model'] },
-          { term:'Sector model', definition:'Hoyt model showing city development in wedge-shaped sectors along transportation routes', connections:['Concentric zone model'] },
-          { term:'Multiple nuclei model', definition:'Harris-Ullman model showing cities develop around multiple centers of activity, not just one CBD', connections:['Edge cities'] },
-          { term:'Galactic city model', definition:'Model of a sprawling urban area with a CBD surrounded by suburban developments, edge cities, and a beltway', connections:['Edge cities','Suburbanization'] },
-          { term:'Griffin-Ford model', definition:'Model of Latin American cities with a CBD, commercial spine, and zones of decreasing wealth toward the periphery', example:'Mexico City', connections:['Primate city'] }
-        ],
-        'Urban Land Use': [
-          { term:'Suburbanization', definition:'Movement of people from cities to suburbs', example:'Growth of suburbs around Chicago after WWII', causes:['Automobiles','Desire for space','Affordable housing'], effects:['Urban sprawl','Racial/economic segregation'], connections:['Urban sprawl'] },
-          { term:'Urban sprawl', definition:'Unplanned expansion of cities into surrounding rural land', example:'Phoenix, Arizona', causes:['Car dependence','Cheap land on periphery'], effects:['Pollution','Loss of farmland'], connections:['Suburbanization'] },
-          { term:'Urban decentralization', definition:'Movement of people and jobs away from city centers to suburbs and edge cities', example:'U.S. suburban office parks', causes:['Transportation improvements','Lower suburban land costs'], effects:['Decline of CBD importance'], connections:['Edge cities'] },
-          { term:'Edge city', definition:'A suburban area with significant employment and commercial services, functioning like a second downtown', example:'Tysons Corner, Virginia', causes:['Decentralization','Highway construction'], effects:['Reduced CBD importance'], connections:['Suburbanization'] },
-          { term:'Exurb', definition:'A rural-like area beyond the suburbs where commuters live', example:'Outer areas of Dallas-Fort Worth', causes:['Desire for space','Remote work'], effects:['Longer commutes','Farmland conversion'], connections:['Urban sprawl'] },
-          { term:'Boomburb', definition:'A large, rapidly growing suburb with over 100,000 residents but no traditional downtown', example:'Mesa, Arizona', causes:['Population growth','Sunbelt migration'], effects:['Urban expansion'], connections:['Suburbanization'] },
-          { term:'Infill', definition:'Building on unused or underused land within existing urban areas', effects:['More efficient land use','Reduces sprawl'], connections:['Smart growth'] },
-          { term:'Mixed land use', definition:'Combining residential and commercial uses in the same area', effects:['Increased walkability','Reduced car dependence'], connections:['Smart growth','New Urbanism'] },
-          { term:'Transportation-oriented development', definition:'Compact, mixed-use development centered around public transit stations', effects:['Reduced car dependency','Lower emissions'], connections:['Smart growth'] }
-        ],
-        'Urban Sustainability': [
-          { term:'Smart growth', definition:'Urban planning approach that focuses on compact, sustainable development', effects:['Less sprawl','Walkable communities','Preserved open space'], connections:['New Urbanism','Greenbelts'] },
-          { term:'New Urbanism', definition:'Design philosophy promoting walkable, mixed-use neighborhoods with a sense of community', connections:['Smart growth'] },
-          { term:'Greenbelts', definition:'Protected areas of undeveloped land surrounding cities to prevent sprawl', effects:['Limits urban expansion','Preserves nature'], connections:['Smart growth','Urban growth boundary'] },
-          { term:'Urban growth boundary', definition:'A legal boundary set around a city to limit outward expansion', connections:['Greenbelts','Smart growth'] },
-          { term:'Urban sustainability', definition:'Meeting the needs of the present urban population without compromising the ability of future generations', connections:['Ecological footprint','Smart growth'] },
-          { term:'Ecological footprint', definition:'The total environmental impact of a city\'s resource consumption and waste production', connections:['Urban sustainability'] },
-          { term:'Brownfields', definition:'Abandoned or contaminated former industrial sites within urban areas', effects:['Lower property values','Redevelopment opportunities'], connections:['Urban sustainability'] },
-          { term:'Deindustrialization', definition:'The decline of manufacturing and industrial activity in a city or region', example:'Detroit losing auto manufacturing jobs', effects:['Job loss','Population decline','Urban blight'], connections:['Brownfields'] },
-          { term:'Urban heat island', definition:'Urban areas experiencing significantly higher temperatures than surrounding rural areas due to concrete and asphalt', connections:['Urban sustainability','Ecological footprint'] }
-        ],
-        'Urban Problems and Inequality': [
-          { term:'De facto segregation', definition:'Racial or economic segregation that occurs by social practice rather than by law', connections:['Redlining','Blockbusting'] },
-          { term:'Redlining', definition:'Practice of denying loans or insurance to residents of certain neighborhoods based on race or ethnicity', effects:['Long-term wealth inequality','Neighborhood disinvestment'], connections:['De facto segregation'] },
-          { term:'Blockbusting', definition:'Real estate agents encouraging homeowners to sell cheaply by stoking fears of racial demographic change', connections:['De facto segregation','White flight'] },
-          { term:'Gentrification', definition:'Wealthier people moving into and renovating lower-income neighborhoods, raising property values', effects:['Displacement of long-term residents','Rising rents','Improved infrastructure'], connections:['Urban renewal'] },
-          { term:'Squatter settlement', definition:'Informal housing areas built without legal permission, often lacking basic services', example:'Favelas in Rio de Janeiro, Brazil', connections:['Periphery countries','Urbanization'] },
-          { term:'Environmental injustice', definition:'The disproportionate exposure of poor and minority communities to pollution and environmental hazards', connections:['Urban sustainability'] },
-          { term:'World city', definition:'A major global center of economic, political, and cultural influence', example:'New York City, London, Tokyo', causes:['Global trade','Financial markets'], effects:['High economic influence','International migration'], connections:['Globalization','Urban hierarchy'] },
-          { term:'White flight', definition:'Movement of white residents from cities to suburbs, often driven by racial tensions', connections:['Suburbanization','De facto segregation'] },
-          { term:'Eminent domain', definition:'Government power to take private property for public use with compensation', connections:['Urban redevelopment'] },
-          { term:'Food desert', definition:'Area with limited access to affordable and nutritious food, often in low-income urban neighborhoods', connections:['Environmental injustice','Urban problems'] }
-        ]
+        'Urbanization and Migration': {
+          passage: `Urbanization is the process by which an increasing percentage of a population lives in cities. This process is primarily driven by rural-to-urban migration, where individuals move to cities in search of better economic opportunities, education, and healthcare. In developing countries, urbanization often occurs rapidly due to industrialization and limited opportunities in rural areas.\n\nFor example, cities like Lagos have experienced rapid urban growth as people migrate from rural regions. This rapid growth can lead to challenges such as overcrowding, the expansion of squatter settlements, and strain on infrastructure like water, transportation, and sanitation systems.\n\nIn contrast, in developed countries such as the United States, urbanization has slowed, and many people have moved to suburbs, a process known as suburbanization. This reflects differences in economic development and infrastructure capacity.`,
+          frqs: [
+            { prompt: 'Explain ONE cause of rapid urbanization in developing countries.', model: 'Rural-to-urban migration is a primary cause of rapid urbanization in developing countries. People move from rural areas to cities seeking better economic opportunities, education, and healthcare. For example, in Lagos, Nigeria, millions have migrated from rural regions where agricultural jobs are declining, leading to explosive urban growth.' },
+            { prompt: 'Describe ONE effect of rapid urbanization on infrastructure in a developing country.', model: 'Rapid urbanization strains infrastructure such as water systems, sanitation, and transportation. In Lagos, the city\'s infrastructure was not built to support its current population, resulting in traffic congestion, inadequate sewage systems, and unreliable water supply for millions of residents.' },
+            { prompt: 'Compare urbanization patterns in developing countries with those in developed countries.', model: 'In developing countries, urbanization occurs rapidly as people migrate to cities for economic opportunity, often outpacing infrastructure development and leading to squatter settlements. In developed countries like the United States, urbanization has slowed and many people have moved to suburbs (suburbanization), reflecting higher economic development and existing infrastructure capacity.' },
+          ],
+          mcqs: [
+            { q: 'Which of the following is the PRIMARY driver of urbanization in developing countries?', o: ['Government relocation programs','Rural-to-urban migration for economic opportunity','Natural population increase in cities','International immigration'], a: 1, explain: 'Rural-to-urban migration is the main driver as people leave rural areas seeking jobs, education, and healthcare in cities.' },
+            { q: 'Lagos, Nigeria is an example of a city experiencing', o: ['Deindustrialization and population decline','Slow, planned urban growth','Rapid urbanization with infrastructure strain','Counter-urbanization'], a: 2, explain: 'Lagos has experienced rapid, often unplanned growth leading to overcrowding and strained infrastructure.' },
+            { q: 'Suburbanization in the United States is BEST explained by', o: ['Lack of jobs in cities','Movement of people from cities to surrounding suburbs','Rapid industrialization of rural areas','International migration to small towns'], a: 1, explain: 'Suburbanization is the movement of people from urban centers to suburbs, driven by cars, affordable housing, and desire for space.' },
+            { q: 'Which of the following is a challenge caused by rapid urbanization?', o: ['Decreased population density','Growth of squatter settlements','Reduced rural-to-urban migration','Improved infrastructure'], a: 1, explain: 'When cities grow faster than infrastructure can support, informal squatter settlements often develop to house the growing population.' },
+            { q: 'How does urbanization in periphery countries differ from core countries?', o: ['Periphery countries urbanize slower','Core countries have more squatter settlements','Periphery countries experience faster, less planned urbanization','Core countries have higher rural-to-urban migration rates'], a: 2, explain: 'Periphery countries often experience rapid, unplanned urbanization while core countries have slower, more managed urban growth.' },
+            { q: 'A student studying urbanization would MOST likely use which data?', o: ['Agricultural export statistics','Percentage of population living in urban areas over time','Military spending by country','Literacy rates by gender'], a: 1, explain: 'Percent urban is the standard measure of urbanization, tracking the share of population living in cities.' },
+            { q: 'Which factor would MOST likely slow urbanization in a country?', o: ['Industrial job growth in cities','Improved rural economic opportunities','Declining agricultural productivity','Construction of new highways to cities'], a: 1, explain: 'If rural areas offer better opportunities, fewer people need to migrate to cities, slowing urbanization.' },
+            { q: 'The expansion of squatter settlements is MOST directly linked to', o: ['Smart growth policies','Rapid urban population growth exceeding housing supply','Gentrification of inner-city neighborhoods','Suburbanization in developed countries'], a: 1, explain: 'When urban growth outpaces formal housing construction, people build informal settlements without legal permission or basic services.' },
+          ]
+        },
+        'City Distribution and Models': {
+          passage: `Cities are distributed unevenly across countries and can be analyzed using concepts such as the rank-size rule and primate cities. The rank-size rule suggests that the second-largest city in a country is half the size of the largest, and so on. This pattern is common in more economically developed countries.\n\nIn contrast, a primate city dominates a country's economic, political, and cultural life. For example, Paris is significantly larger and more influential than other French cities. Primate cities are often found in developing countries where economic development is uneven.\n\nThe gravity model explains interactions between cities, suggesting that larger cities have stronger interactions, but distance reduces interaction. Additionally, central place theory explains how cities provide goods and services to surrounding areas, with concepts like threshold (minimum customers needed) and range (distance people are willing to travel).`,
+          frqs: [
+            { prompt: 'Explain the difference between a rank-size distribution and a primate city pattern.', model: 'In a rank-size distribution, cities follow a predictable pattern where the nth-ranked city is 1/n the size of the largest city, creating a balanced urban system with many medium-sized cities. This is common in developed countries like the United States. A primate city pattern occurs when one city is disproportionately large \u2014 more than twice the size of the second-largest \u2014 and dominates the country economically and politically. Paris, France is an example, being far larger and more influential than any other French city.' },
+            { prompt: 'Using the gravity model, explain why New York City and Philadelphia have strong economic interactions.', model: 'The gravity model predicts that interaction between two cities is proportional to their populations and inversely proportional to the distance between them. New York City and Philadelphia are both large cities (high population) that are relatively close together (about 95 miles apart). Their large populations create demand for trade, commuting, and services, while their short distance makes interaction convenient and frequent.' },
+            { prompt: 'Explain how central place theory uses the concepts of threshold and range to predict city distribution.', model: 'Central place theory predicts that cities are evenly distributed to serve surrounding populations. Threshold is the minimum number of customers needed to support a service \u2014 a hospital needs more customers than a gas station. Range is the maximum distance people will travel for that service. Higher-order services (like hospitals) have higher thresholds and ranges, so they are found only in larger cities spaced farther apart. Lower-order services (like convenience stores) have low thresholds and are found in small towns close together.' },
+          ],
+          mcqs: [
+            { q: 'According to the rank-size rule, if the largest city has 10 million people, the third-largest city should have approximately', o: ['5 million','3.3 million','2.5 million','1 million'], a: 1, explain: 'The rank-size rule states the nth city = largest city / n. So 3rd city = 10 million / 3 = approximately 3.3 million.' },
+            { q: 'A primate city is BEST characterized as', o: ['The capital city of any country','A city with over 10 million people','A city more than twice the size of the second-largest city that dominates national life','The oldest city in a country'], a: 2, explain: 'A primate city is disproportionately large and dominates the economic, political, and cultural life of the country.' },
+            { q: 'The gravity model would predict the STRONGEST interaction between', o: ['Two small towns 500 miles apart','A large city and a small town 10 miles apart','Two large cities 50 miles apart','Two large cities 1000 miles apart'], a: 2, explain: 'The gravity model predicts interaction increases with population size and decreases with distance. Two large, nearby cities interact most.' },
+            { q: 'Central place theory assumes that consumers will', o: ['Always travel to the largest city','Travel to the nearest place that offers the service they need','Only shop in their own city','Prefer rural markets over urban ones'], a: 1, explain: 'Central place theory assumes consumers minimize travel distance and go to the nearest available provider.' },
+            { q: 'A specialized hospital has a HIGH threshold. This means it', o: ['Is found in every small town','Needs a large population to be economically viable','Is always located in the CBD','Has a very small range'], a: 1, explain: 'High threshold means the service requires many customers to stay in business, so it is only found in larger cities.' },
+            { q: 'Which country would MOST likely have a rank-size distribution?', o: ['A small developing nation with one dominant port city','A large, economically developed country with multiple industries','A country with a strong centralized government','A country that recently gained independence'], a: 1, explain: 'Rank-size distributions are common in large, developed countries with diversified economies that support many medium-sized cities.' },
+            { q: 'Paris as a primate city MOST reflects', o: ['Even economic development across France','Concentration of political and economic power in one city','A rank-size distribution','Central place theory in action'], a: 1, explain: 'Paris dominates France\'s economy, politics, and culture far beyond what its population alone would predict \u2014 a classic primate city.' },
+            { q: 'Which concept explains why gas stations are common but professional sports stadiums are rare?', o: ['Rank-size rule','Gravity model','Threshold and range','Bid-rent theory'], a: 2, explain: 'Gas stations have low thresholds (few customers needed) and are everywhere. Stadiums need huge populations (high threshold) so they\'re only in large cities.' },
+          ]
+        },
+        'Internal City Structure': {
+          passage: `Cities are structured based on land value and accessibility. The central business district (CBD) is typically located at the center of a city and contains the highest land values due to accessibility and economic activity.\n\nThe bid-rent theory explains that land prices decrease as distance from the CBD increases. This results in different social and economic groups living in different areas of a city.\n\nUrban models such as the Burgess concentric zone model, Hoyt sector model, and multiple nuclei model explain how cities grow and organize spatially. For example, wealthier individuals often live farther from the city center where land is cheaper and more spacious, while lower-income populations may live closer to industrial zones or the CBD.\n\nThe Griffin-Ford model describes Latin American cities, where wealth concentrates near the CBD and along a commercial spine, with poverty increasing toward the periphery. The galactic city model reflects modern suburban sprawl with edge cities and beltways surrounding a traditional CBD.`,
+          frqs: [
+            { prompt: 'Using bid-rent theory, explain why commercial businesses locate in the CBD while residential areas are farther out.', model: 'Bid-rent theory states that land value decreases with distance from the city center. Commercial businesses can afford the highest rents because they benefit most from the CBD\'s accessibility and foot traffic \u2014 their profit per square foot is high. Residential users cannot compete with these rents near the center, so housing is located farther out where land is cheaper and lots can be larger. This creates a pattern where the CBD is commercial, surrounded by progressively lower-density residential areas.' },
+            { prompt: 'Compare the Burgess concentric zone model with the Hoyt sector model.', model: 'The Burgess concentric zone model shows cities growing in rings outward from the CBD, with a transition zone, working-class housing, middle-class housing, and commuter zone in successive rings. It assumes uniform land and transportation. The Hoyt sector model instead shows growth in wedge-shaped sectors along transportation corridors \u2014 for example, industry develops along a railroad, and wealthy areas extend along a boulevard. Hoyt\'s model better accounts for how transportation routes shape where different income groups live, rather than assuming simple ring patterns.' },
+            { prompt: 'Explain how the Griffin-Ford model differs from North American urban models.', model: 'The Griffin-Ford model, used for Latin American cities, shows wealth concentrated near the CBD and along a commercial spine extending outward, with poverty increasing toward the periphery where squatter settlements (favelas) are found. This contrasts with North American models where wealthier residents typically live in outer suburbs and lower-income populations live closer to the center. Latin American cities also feature a zone of in situ accretion (transition) and a periferico (poor outer ring), reflecting different patterns of colonial development and economic inequality.' },
+          ],
+          mcqs: [
+            { q: 'According to bid-rent theory, which land use can afford the HIGHEST rents near the CBD?', o: ['Single-family residential','Agriculture','Commercial/retail','Industrial'], a: 2, explain: 'Commercial businesses generate the most revenue per square foot from high foot traffic and accessibility, so they outbid other uses for CBD land.' },
+            { q: 'In the Burgess concentric zone model, the transition zone is characterized by', o: ['Wealthy single-family homes','Industry mixed with low-income housing','Suburban commuter neighborhoods','The central business district'], a: 1, explain: 'The transition zone surrounds the CBD and contains a mix of industry, deteriorating housing, and immigrant communities.' },
+            { q: 'The Hoyt sector model DIFFERS from the Burgess model mainly because it accounts for', o: ['Multiple business centers','The role of transportation corridors in shaping land use','Suburban edge cities','Agricultural land use'], a: 1, explain: 'Hoyt showed that land use develops in wedges along transportation routes, not in uniform rings.' },
+            { q: 'In the Griffin-Ford model, the wealthiest residents are MOST likely found', o: ['On the urban periphery','Near the CBD and along the commercial spine','In squatter settlements','In the transition zone'], a: 1, explain: 'Latin American cities concentrate wealth near the center and along the main commercial corridor, unlike North American patterns.' },
+            { q: 'Edge cities are BEST associated with which urban model?', o: ['Concentric zone model','Sector model','Galactic city (peripheral) model','Griffin-Ford model'], a: 2, explain: 'The galactic city model describes modern metro areas with suburban nodes, edge cities, and beltways surrounding a traditional CBD.' },
+            { q: 'Which statement BEST describes how the multiple nuclei model differs from the concentric zone model?', o: ['It shows growth in sectors','It shows cities developing around several centers of activity','It only applies to Latin American cities','It focuses on transportation corridors'], a: 1, explain: 'Harris and Ullman\'s multiple nuclei model recognizes that cities often develop around multiple centers (airports, universities, industrial parks), not just one CBD.' },
+            { q: 'A city where land values drop steadily from the center outward BEST illustrates', o: ['Central place theory','The rank-size rule','Bid-rent theory','The gravity model'], a: 2, explain: 'Bid-rent theory directly predicts that land values decrease with distance from the city center.' },
+            { q: 'Favelas on the outskirts of Rio de Janeiro are consistent with which model?', o: ['Burgess concentric zone model','Hoyt sector model','Griffin-Ford model','Galactic city model'], a: 2, explain: 'The Griffin-Ford model shows poverty increasing toward the periphery of Latin American cities, where squatter settlements like favelas are located.' },
+          ]
+        },
+        'Urban Land Use and Sustainability': {
+          passage: `Urban land use refers to how land within a city is utilized. High-density development, such as apartment buildings, allows for efficient land use, while low-density development, such as suburban housing, contributes to urban sprawl.\n\nUrban sprawl is the expansion of cities into rural areas and is often caused by car dependency and affordable land. This leads to environmental issues such as increased pollution and loss of farmland.\n\nTo address these issues, cities implement strategies such as smart growth, mixed land use, and transportation-oriented development. These approaches aim to create more sustainable, walkable, and efficient urban environments.\n\nFor example, mixed land use allows residential, commercial, and recreational spaces to coexist, reducing the need for long commutes and decreasing reliance on cars.\n\nGreenbelts and urban growth boundaries are tools used to limit outward expansion, while urban infill develops vacant land within city limits. New Urbanism promotes walkable, human-scale neighborhoods as an alternative to car-dependent sprawl.`,
+          frqs: [
+            { prompt: 'Explain TWO environmental consequences of urban sprawl.', model: 'First, urban sprawl increases air pollution because residents in low-density suburbs depend on cars for transportation, generating more vehicle emissions per capita than compact urban areas. Second, sprawl leads to loss of farmland and natural habitats as development expands into rural areas, reducing agricultural capacity and biodiversity. For example, Phoenix, Arizona has consumed vast amounts of desert and farmland as the metro area expanded.' },
+            { prompt: 'Describe how smart growth strategies address the problems of urban sprawl.', model: 'Smart growth strategies concentrate development in compact, walkable areas rather than allowing outward expansion. Mixed land use combines residential, commercial, and recreational spaces so residents can walk to shops and services instead of driving. Transportation-oriented development builds housing near transit stations, reducing car dependence. Urban growth boundaries and greenbelts legally limit outward expansion. Together, these strategies reduce pollution, preserve farmland, and create more efficient infrastructure use.' },
+            { prompt: 'Compare the goals of New Urbanism with the characteristics of traditional suburban development.', model: 'New Urbanism promotes walkable, mixed-use neighborhoods with homes, shops, and public spaces close together, designed at a human scale rather than for cars. Traditional suburban development separates land uses through zoning \u2014 residential areas are far from commercial areas \u2014 creating car-dependent, low-density communities with wide roads and large lots. New Urbanism aims to reverse the isolation and environmental costs of suburbanization by creating communities where daily needs are accessible on foot.' },
+          ],
+          mcqs: [
+            { q: 'Urban sprawl is MOST directly caused by', o: ['Smart growth policies','Greenbelts limiting city expansion','Car dependency and cheap land on the urban fringe','High-density zoning in the CBD'], a: 2, explain: 'Sprawl occurs when people can drive to cheap land on the city edge, spreading development outward in low-density patterns.' },
+            { q: 'Which strategy BEST reduces automobile dependency in a city?', o: ['Building more highways','Transportation-oriented development near transit stations','Expanding suburban housing','Eliminating zoning laws'], a: 1, explain: 'TOD places housing and services near transit, making public transportation convenient and reducing the need to drive.' },
+            { q: 'Mixed land use helps sustainability by', o: ['Separating homes from businesses','Allowing people to walk to shops and services, reducing car trips','Increasing suburban lot sizes','Moving industry to the CBD'], a: 1, explain: 'When residential and commercial uses are combined, daily errands can be done on foot, cutting emissions and traffic.' },
+            { q: 'A greenbelt around a city is designed to', o: ['Increase urban sprawl','Attract industry to the periphery','Limit outward expansion and preserve open space','Create new suburban developments'], a: 2, explain: 'Greenbelts are protected open areas around cities that prevent development from spreading outward.' },
+            { q: 'Urban infill development is considered sustainable because it', o: ['Expands the city into farmland','Builds on vacant land within existing city limits','Increases car dependency','Replaces parks with housing'], a: 1, explain: 'Infill uses underutilized land inside the city rather than expanding outward, reducing sprawl and making better use of existing infrastructure.' },
+            { q: 'A city with large single-family homes on big lots, separated from commercial areas, BEST represents', o: ['New Urbanism','Smart growth','Traditional suburban development','Transit-oriented development'], a: 2, explain: 'Traditional suburbs separate land uses and feature low-density, car-dependent housing \u2014 the opposite of smart growth or New Urbanism.' },
+            { q: 'Portland, Oregon is often cited as an example of smart growth because it', o: ['Has no zoning laws','Implemented an urban growth boundary','Encouraged unlimited suburban expansion','Eliminated public transportation'], a: 1, explain: 'Portland\'s urban growth boundary legally limits outward development, concentrating growth inward \u2014 a key smart growth tool.' },
+            { q: 'The ecological footprint of a sprawling city is typically LARGER than a compact city because', o: ['Compact cities have more people','Sprawling cities use more land and energy per person','Compact cities lack public transit','Sprawling cities have smaller populations'], a: 1, explain: 'Sprawl means more driving, more land consumption, and more infrastructure per person, all increasing environmental impact.' },
+          ]
+        },
+        'Urban Problems and Inequality': {
+          passage: `Urban areas often experience social and economic inequalities. Practices such as redlining historically denied loans to residents in certain neighborhoods, often based on race, leading to long-term economic disparities.\n\nBlockbusting further contributed to segregation by encouraging panic selling among white homeowners, leading to demographic shifts and declining property values.\n\nGentrification occurs when wealthier individuals move into lower-income neighborhoods, increasing property values but often displacing existing residents.\n\nIn developing countries, rapid urbanization can lead to the growth of squatter settlements, where residents lack legal land ownership and access to basic services.\n\nAdditionally, environmental injustice occurs when disadvantaged communities are disproportionately exposed to environmental hazards, such as pollution or industrial waste. These patterns reflect broader systemic inequalities in how urban resources and burdens are distributed.`,
+          frqs: [
+            { prompt: 'Explain how redlining contributed to long-term economic inequality in American cities.', model: 'Redlining was the practice of banks and insurance companies denying loans and services to residents in neighborhoods marked as "high risk," which were predominantly Black and minority areas. Without access to mortgages, residents could not buy homes or build wealth through property ownership. Over decades, this created a cycle of disinvestment \u2014 neighborhoods deteriorated, property values stayed low, schools were underfunded, and residents had fewer economic opportunities. The effects persist today in wealth gaps between redlined and non-redlined neighborhoods.' },
+            { prompt: 'Describe the positive AND negative effects of gentrification on a neighborhood.', model: 'Positive effects include improved infrastructure, renovated buildings, new businesses, lower crime rates, and increased tax revenue for the city. Negative effects include displacement of long-term residents who can no longer afford rising rents, loss of cultural identity and community networks, and the replacement of affordable local businesses with expensive ones. For example, neighborhoods in Brooklyn, New York have seen both physical improvements and significant displacement of lower-income, often minority residents.' },
+            { prompt: 'Explain how environmental injustice is connected to urban inequality.', model: 'Environmental injustice occurs when poor and minority communities bear a disproportionate burden of environmental hazards such as pollution, toxic waste sites, and industrial facilities. This happens because these communities often have less political power to resist the placement of harmful facilities, and lower property values attract industrial land uses. For example, low-income neighborhoods near highways or factories experience higher rates of asthma and other health problems. This reinforces existing inequality \u2014 environmental hazards reduce property values and health, making it harder for residents to improve their economic situation.' },
+          ],
+          mcqs: [
+            { q: 'Redlining MOST directly contributed to', o: ['Suburbanization of wealthy residents','Long-term wealth inequality between racial groups','Growth of edge cities','Increased immigration to cities'], a: 1, explain: 'By denying loans to minority neighborhoods, redlining prevented wealth accumulation through homeownership for generations.' },
+            { q: 'Blockbusting is BEST defined as', o: ['Building new blocks of housing in suburbs','Real estate agents encouraging panic selling by exploiting racial fears','Government programs to integrate neighborhoods','Banks refusing loans in certain areas'], a: 1, explain: 'Blockbusting involved agents telling white homeowners that minorities were moving in, causing them to sell cheaply, then reselling at profit.' },
+            { q: 'Which is a NEGATIVE consequence of gentrification?', o: ['Improved infrastructure','New business investment','Displacement of long-term, lower-income residents','Increased tax revenue'], a: 2, explain: 'While gentrification brings investment, it raises rents and property taxes, pushing out existing residents who can no longer afford to stay.' },
+            { q: 'Squatter settlements are MOST common in cities experiencing', o: ['Deindustrialization in developed countries','Rapid urbanization that outpaces housing supply','Smart growth and urban planning','Counter-urbanization'], a: 1, explain: 'When people flood into cities faster than formal housing can be built, informal settlements arise without legal ownership or services.' },
+            { q: 'Environmental injustice refers to', o: ['Equal distribution of parks across a city','Disproportionate exposure of poor communities to environmental hazards','Government environmental regulations','Suburban residents facing pollution'], a: 1, explain: 'Environmental injustice is when disadvantaged groups face more pollution, waste sites, and health risks than wealthier communities.' },
+            { q: 'A neighborhood where old apartments are renovated into luxury condos and long-time residents move away is an example of', o: ['Redlining','Blockbusting','Gentrification','Suburbanization'], a: 2, explain: 'Gentrification involves wealthier people renovating lower-income areas, raising costs and displacing existing residents.' },
+            { q: 'Which pair of concepts BOTH contributed to racial segregation in American cities?', o: ['Smart growth and New Urbanism','Redlining and blockbusting','Gentrification and urban infill','Central place theory and bid-rent theory'], a: 1, explain: 'Redlining denied minorities financial services while blockbusting triggered white flight \u2014 both reinforced racial segregation in housing.' },
+            { q: 'A factory built next to a low-income housing project rather than a wealthy suburb BEST illustrates', o: ['Bid-rent theory','Central place theory','Environmental injustice','Urban sprawl'], a: 2, explain: 'Placing environmental hazards near disadvantaged communities who lack political power to resist is a textbook example of environmental injustice.' },
+          ]
+        }
       }
     };
 
@@ -2348,8 +2523,8 @@
         `;
       }
 
-      // Review flashcard expandable item
-      const unitReview = reviewData[unitNum];
+      // Review FRQ + MC expandable item
+      const unitReview = reviewContentData[unitNum];
       if (unitReview) {
         const categories = Object.keys(unitReview);
         html += `
@@ -2440,7 +2615,7 @@
           currentView = 'review';
           detailItems.querySelectorAll('.sidebar-item').forEach(b => b.classList.remove('active'));
           btn.classList.add('active');
-          showReviewCategory(unitNum, btn.dataset.revCat);
+          showReviewTopic(unitNum, btn.dataset.revCat);
           closeSidebar();
         });
       });
@@ -3972,41 +4147,32 @@
       }
     };
 
-    // ── Review System Functions ──
-    function getReviewLevels(unitNum) {
-      const key = `reviewLevels_unit${unitNum}`;
-      const stored = localStorage.getItem(key);
-      if (stored) return JSON.parse(stored);
-      // Initialize all cards at level 1
-      const levels = {};
-      const unitReview = reviewData[unitNum];
-      if (!unitReview) return levels;
-      for (const cat of Object.keys(unitReview)) {
-        for (const card of unitReview[cat]) {
-          levels[card.term] = 1;
-        }
-      }
-      localStorage.setItem(key, JSON.stringify(levels));
-      return levels;
-    }
-
-    function saveReviewLevels(unitNum, levels) {
-      localStorage.setItem(`reviewLevels_unit${unitNum}`, JSON.stringify(levels));
-    }
-
-    function showReviewCategory(unitNum, categoryName) {
-      const unitReview = reviewData[unitNum];
+    // ── Review System Functions (FRQ + MC) ──
+    function showReviewTopic(unitNum, categoryName) {
+      const unitReview = reviewContentData[unitNum];
       if (!unitReview) return;
 
-      let cards = [];
+      // Gather data — for Overall, combine all topics
+      let passage = '';
+      let frqs = [];
+      let mcqs = [];
       if (categoryName === 'Overall') {
+        const passages = [];
         for (const cat of Object.keys(unitReview)) {
-          cards = cards.concat(unitReview[cat]);
+          passages.push(unitReview[cat].passage);
+          frqs = frqs.concat(unitReview[cat].frqs);
+          mcqs = mcqs.concat(unitReview[cat].mcqs);
         }
+        passage = passages.join('\n\n---\n\n');
       } else {
-        cards = [...unitReview[categoryName]];
+        const topic = unitReview[categoryName];
+        if (!topic) return;
+        passage = topic.passage;
+        frqs = [...topic.frqs];
+        mcqs = [...topic.mcqs];
       }
 
+      // Hide other views
       document.getElementById('map').style.display = 'none';
       let existing = document.getElementById('reading-quiz-container');
       if (existing) existing.remove();
@@ -4019,116 +4185,199 @@
       document.querySelector('.main-area').appendChild(container);
       document.getElementById('prompt-bar').innerHTML = `<span>Review &mdash; ${categoryName}</span>`;
 
-      const levels = getReviewLevels(unitNum);
+      let activeTab = 'frq';
 
-      // Filter to cards not yet mastered (level < 5), shuffle
-      let studyCards = cards.filter(c => (levels[c.term] || 1) < 5);
-      // Sort by level ascending so lowest-level cards come first
-      studyCards.sort((a, b) => (levels[a.term] || 1) - (levels[b.term] || 1));
-
-      let currentIdx = 0;
-
-      function renderState() {
-        // Recompute level counts
-        const lvlCounts = [0, 0, 0, 0, 0];
-        for (const c of cards) {
-          const lv = levels[c.term] || 1;
-          lvlCounts[lv - 1]++;
-        }
-        const mastered = lvlCounts[4];
-        const pct = Math.round((mastered / cards.length) * 100);
-
+      function render() {
         let html = '';
-        html += `<div class="review-header"><div class="review-title">Review: ${categoryName}</div><div class="review-category">${cards.length} terms &middot; ${mastered} mastered</div></div>`;
 
-        // Level boxes
-        html += '<div class="review-levels">';
-        for (let i = 0; i < 5; i++) {
-          html += `<div class="review-level-box${i === 4 && mastered > 0 ? ' active' : ''}"><div class="level-label">L${i+1}</div><div class="level-count">${lvlCounts[i]}</div></div>`;
-        }
+        // Header
+        html += `<div class="review-header"><div class="review-title">Review: ${categoryName}</div><div class="review-subtitle">${frqs.length} FRQ prompts &middot; ${mcqs.length} multiple choice questions</div></div>`;
+
+        // Passage
+        html += `<div class="review-passage">${passage.replace(/---/g, '<hr style="border:none;border-top:1px solid rgba(0,0,0,0.08);margin:16px 0;">')}</div>`;
+
+        // Tabs
+        html += '<div class="review-section-tabs">';
+        html += `<button class="review-section-tab${activeTab === 'frq' ? ' active' : ''}" data-tab="frq">FRQ Practice</button>`;
+        html += `<button class="review-section-tab${activeTab === 'mc' ? ' active' : ''}" data-tab="mc">Multiple Choice</button>`;
         html += '</div>';
 
-        // Progress bar
-        html += `<div class="review-progress-bar"><div class="review-progress-fill" style="width:${pct}%"></div></div>`;
-
-        if (studyCards.length === 0 || currentIdx >= studyCards.length) {
-          html += `<div class="review-done"><h2>All cards mastered!</h2><p>You've completed all ${cards.length} flashcards in this set.</p><button class="review-restart-btn" id="review-restart">Study Again from Scratch</button></div>`;
-          container.innerHTML = html;
-          const restartBtn = document.getElementById('review-restart');
-          if (restartBtn) {
-            restartBtn.addEventListener('click', () => {
-              for (const c of cards) levels[c.term] = 1;
-              saveReviewLevels(unitNum, levels);
-              studyCards = [...cards];
-              studyCards.sort(() => Math.random() - 0.5);
-              currentIdx = 0;
-              renderState();
-            });
-          }
-          return;
+        // Tab content
+        html += '<div class="review-tab-content">';
+        if (activeTab === 'frq') {
+          html += renderFRQs();
+        } else {
+          html += '<div id="mc-area"></div>';
         }
-
-        const card = studyCards[currentIdx];
-        const cardLevel = levels[card.term] || 1;
-
-        // Card area
-        html += '<div class="review-card-area"><div class="review-card-wrapper" id="review-card">';
-        // Front
-        html += `<div class="review-card-front"><div class="term-text">${card.term}</div><div class="flip-hint">Click to reveal &middot; Level ${cardLevel}/5</div></div>`;
-        // Back
-        html += '<div class="review-card-back">';
-        html += `<div class="def-text">${card.definition}</div>`;
-        if (card.example) html += `<div class="card-section"><strong>Example:</strong> ${card.example}</div>`;
-        if (card.causes && card.causes.length) html += `<div class="card-section"><strong>Causes:</strong><ul>${card.causes.map(c=>'<li>'+c+'</li>').join('')}</ul></div>`;
-        if (card.effects && card.effects.length) html += `<div class="card-section"><strong>Effects:</strong><ul>${card.effects.map(e=>'<li>'+e+'</li>').join('')}</ul></div>`;
-        if (card.connections && card.connections.length) html += `<div class="card-section"><strong>Connections:</strong> ${card.connections.join(', ')}</div>`;
         html += '</div>';
-        html += '</div></div>';
-
-        // Buttons (hidden until flipped)
-        html += '<div class="review-buttons" id="review-btns" style="visibility:hidden;"><button class="review-btn study-again" id="review-again">Study Again</button><button class="review-btn got-it" id="review-got">Got it</button></div>';
 
         container.innerHTML = html;
 
-        // Bind flip
-        const cardEl = document.getElementById('review-card');
-        const btns = document.getElementById('review-btns');
-        let flipped = false;
-        cardEl.addEventListener('click', () => {
-          if (!flipped) {
-            cardEl.classList.add('flipped');
-            btns.style.visibility = 'visible';
-            flipped = true;
-          }
+        // Bind tab clicks
+        container.querySelectorAll('.review-section-tab').forEach(btn => {
+          btn.addEventListener('click', () => {
+            activeTab = btn.dataset.tab;
+            render();
+          });
         });
 
-        // Got it
-        document.getElementById('review-got').addEventListener('click', () => {
-          const newLevel = Math.min((levels[card.term] || 1) + 1, 5);
-          levels[card.term] = newLevel;
-          saveReviewLevels(unitNum, levels);
-          if (newLevel >= 5) {
-            // Remove from study deck
-            studyCards.splice(currentIdx, 1);
-            // Don't increment currentIdx since array shifted
-          } else {
-            currentIdx++;
-          }
-          if (currentIdx >= studyCards.length && studyCards.length > 0) currentIdx = 0;
-          renderState();
-        });
+        // Bind FRQ reveal buttons
+        if (activeTab === 'frq') {
+          container.querySelectorAll('.frq-reveal-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+              const model = btn.parentElement.querySelector('.frq-model');
+              if (model) {
+                model.classList.add('revealed');
+                btn.style.display = 'none';
+              }
+            });
+          });
+        }
 
-        // Study Again
-        document.getElementById('review-again').addEventListener('click', () => {
-          levels[card.term] = 1;
-          saveReviewLevels(unitNum, levels);
-          currentIdx++;
-          if (currentIdx >= studyCards.length) currentIdx = 0;
-          renderState();
-        });
+        // Start MC quiz
+        if (activeTab === 'mc') {
+          startMCQuiz();
+        }
       }
 
-      renderState();
+      function renderFRQs() {
+        let html = '';
+        frqs.forEach((frq, i) => {
+          html += `<div class="frq-card">
+            <div class="frq-prompt">${i + 1}. ${frq.prompt}</div>
+            <div class="frq-tip">Think about this question, then reveal the model answer below.</div>
+            <button class="frq-reveal-btn">Show Model Answer</button>
+            <div class="frq-model">
+              <div class="frq-model-label">Model Answer</div>
+              <div>${frq.model}</div>
+            </div>
+          </div>`;
+        });
+        return html;
+      }
+
+      function startMCQuiz() {
+        const letters = ['A','B','C','D'];
+        const shuffled = [...mcqs];
+        // Shuffle
+        for (let i = shuffled.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+        }
+        let current = 0;
+        let score = 0;
+        const mcArea = container.querySelector('#mc-area');
+
+        function renderMCQuestion() {
+          const q = shuffled[current];
+          let html = '';
+          html += `<div class="review-progress">
+            Question ${current + 1} of ${shuffled.length}
+            <div class="review-progress-bar"><div class="review-progress-fill" style="width:${(current / shuffled.length) * 100}%"></div></div>
+          </div>`;
+          html += `<div class="mcq-card">
+            <div class="mcq-question">${q.q}</div>
+            <div class="mcq-options">
+              ${q.o.map((opt, i) => `
+                <button class="mcq-option" data-idx="${i}">
+                  <span class="option-letter">${letters[i]}</span>
+                  <span>${opt}</span>
+                </button>
+              `).join('')}
+            </div>
+          </div>`;
+          mcArea.innerHTML = html;
+
+          mcArea.querySelectorAll('.mcq-option').forEach(btn => {
+            btn.addEventListener('click', () => handleMCAnswer(parseInt(btn.dataset.idx)));
+          });
+        }
+
+        function handleMCAnswer(idx) {
+          const q = shuffled[current];
+          const options = mcArea.querySelectorAll('.mcq-option');
+
+          options.forEach(btn => {
+            btn.classList.add('answered');
+            const i = parseInt(btn.dataset.idx);
+            if (i === q.a) btn.classList.add('correct');
+            if (i === idx && idx !== q.a) btn.classList.add('wrong');
+          });
+
+          if (idx === q.a) {
+            score++;
+            removeFromRedo(unitNum, 'reading', q.q);
+          } else {
+            addToRedo(unitNum, 'reading', q.q);
+          }
+
+          // Update progress bar
+          const fill = mcArea.querySelector('.review-progress-fill');
+          if (fill) fill.style.width = `${((current + 1) / shuffled.length) * 100}%`;
+
+          // Show explanation
+          const card = mcArea.querySelector('.mcq-card');
+          if (q.explain) {
+            const explainDiv = document.createElement('div');
+            explainDiv.className = 'mcq-explain';
+            explainDiv.textContent = q.explain;
+            card.appendChild(explainDiv);
+          }
+
+          // Next button
+          const nextBtn = document.createElement('button');
+          nextBtn.className = 'mcq-next-btn';
+          nextBtn.textContent = current < shuffled.length - 1 ? 'Next Question' : 'See Results';
+          nextBtn.addEventListener('click', () => {
+            if (current < shuffled.length - 1) {
+              current++;
+              renderMCQuestion();
+            } else {
+              showMCResults();
+            }
+          });
+          card.appendChild(nextBtn);
+        }
+
+        function showMCResults() {
+          const pct = Math.round((score / shuffled.length) * 100);
+          const wrongCount = shuffled.length - score;
+
+          // Save score to localStorage
+          const storageKey = `reviewMC_unit${unitNum}_${categoryName}`;
+          localStorage.setItem(storageKey, JSON.stringify({ score, total: shuffled.length, pct, date: Date.now() }));
+
+          mcArea.innerHTML = `
+            <div class="mcq-card">
+              <div class="mcq-results">
+                <div class="mcq-score">${pct}%</div>
+                <div class="mcq-score-label">${score} out of ${shuffled.length} correct</div>
+                ${wrongCount > 0 ? `<div style="font-size:0.85rem;color:var(--text-muted);margin-bottom:16px;">${wrongCount} wrong &mdash; saved to your Redo list!</div>` : '<div style="font-size:0.85rem;color:var(--pastel-green-dark);margin-bottom:16px;">Perfect score!</div>'}
+                <button class="mcq-retry-btn" id="mc-retry">Try Again</button>
+                <button class="mcq-back-btn" id="mc-back-frq">Back to FRQ</button>
+              </div>
+            </div>
+          `;
+          document.getElementById('mc-retry').addEventListener('click', () => {
+            // Re-shuffle and restart
+            for (let i = shuffled.length - 1; i > 0; i--) {
+              const j = Math.floor(Math.random() * (i + 1));
+              [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+            }
+            current = 0;
+            score = 0;
+            renderMCQuestion();
+          });
+          document.getElementById('mc-back-frq').addEventListener('click', () => {
+            activeTab = 'frq';
+            render();
+          });
+        }
+
+        renderMCQuestion();
+      }
+
+      render();
     }
 
     function showReadingQuizTopic(unitNum, topicId) {
