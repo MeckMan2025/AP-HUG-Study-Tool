@@ -1004,6 +1004,262 @@
       .header-controls { gap: 8px; }
       .sidebar { width: 240px; }
     }
+
+    .site-footer {
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      padding: 6px 16px;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      background: var(--white-80);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-top-left-radius: 10px;
+      z-index: 999;
+    }
+
+    .site-footer a {
+      color: var(--pastel-pink-dark);
+      text-decoration: underline;
+      font-weight: 600;
+    }
+
+    .site-footer a:hover {
+      color: var(--pastel-purple-dark);
+    }
+
+    /* ── Review flashcard styles ── */
+    .review-view {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+      padding: 24px;
+      gap: 20px;
+    }
+
+    .review-header {
+      text-align: center;
+      margin-bottom: 4px;
+    }
+
+    .review-header .review-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .review-header .review-category {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin-top: 4px;
+    }
+
+    .review-levels {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .review-level-box {
+      background: var(--white-80);
+      border: 2px solid var(--white-50);
+      border-radius: 10px;
+      padding: 8px 14px;
+      text-align: center;
+      min-width: 56px;
+      transition: all 0.2s;
+    }
+
+    .review-level-box.active {
+      border-color: var(--pastel-green-dark);
+      background: var(--pastel-green);
+    }
+
+    .review-level-box .level-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+    }
+
+    .review-level-box .level-count {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .review-progress-bar {
+      width: 100%;
+      height: 8px;
+      background: var(--white-50);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .review-progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--pastel-green), var(--pastel-green-dark));
+      border-radius: 4px;
+      transition: width 0.4s ease;
+    }
+
+    .review-card-area {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex: 1;
+      perspective: 1000px;
+      min-height: 280px;
+    }
+
+    .review-card-wrapper {
+      width: 100%;
+      max-width: 520px;
+      min-height: 260px;
+      position: relative;
+      cursor: pointer;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+    }
+
+    .review-card-wrapper.flipped {
+      transform: rotateY(180deg);
+    }
+
+    .review-card-front, .review-card-back {
+      position: absolute;
+      inset: 0;
+      backface-visibility: hidden;
+      border-radius: 16px;
+      padding: 28px 24px;
+      background: var(--white-90);
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .review-card-front {
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .review-card-front .term-text {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .review-card-front .flip-hint {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 16px;
+    }
+
+    .review-card-back {
+      transform: rotateY(180deg);
+      gap: 10px;
+      overflow-y: auto;
+    }
+
+    .review-card-back .def-text {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      line-height: 1.5;
+    }
+
+    .review-card-back .card-section {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .review-card-back .card-section strong {
+      color: var(--text-primary);
+    }
+
+    .review-card-back .card-section ul {
+      margin: 2px 0 0 16px;
+    }
+
+    .review-card-back .card-section ul li {
+      margin-bottom: 2px;
+    }
+
+    .review-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .review-btn {
+      border: none;
+      padding: 10px 28px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+
+    .review-btn.got-it {
+      background: var(--pastel-green);
+      color: var(--text-primary);
+    }
+
+    .review-btn.got-it:hover {
+      background: var(--pastel-green-dark);
+    }
+
+    .review-btn.study-again {
+      background: var(--pastel-pink);
+      color: var(--text-primary);
+    }
+
+    .review-btn.study-again:hover {
+      background: var(--pastel-pink-dark);
+    }
+
+    .review-done {
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .review-done h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .review-done p {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+    }
+
+    .review-restart-btn {
+      margin-top: 16px;
+      border: none;
+      padding: 10px 24px;
+      border-radius: 10px;
+      background: var(--pastel-green);
+      color: var(--text-primary);
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.2s;
+    }
+
+    .review-restart-btn:hover {
+      background: var(--pastel-green-dark);
+    }
   </style>
 </head>
 <body>
@@ -1112,6 +1368,7 @@
     </div>
     <div id="map"></div>
   </div>
+  <footer class="site-footer">Created By <a href="https://github.com/MeckMan2025" target="_blank" rel="noopener">Kayden &lt;3</a></footer>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script>
@@ -1983,6 +2240,70 @@
     const detailSubtitle = document.getElementById('detail-subtitle');
     const detailItems = document.getElementById('detail-items');
 
+    // ── Review Flashcard Data ──
+    const reviewData = {
+      '6': {
+        'Urbanization and Migration': [
+          { term:'Urbanization', definition:'The increasing percentage of people living in cities', example:'Lagos, Nigeria experiencing rapid population growth', causes:['Rural-to-urban migration','Industrialization','Job opportunities'], effects:['Overcrowding','Infrastructure strain','Growth of informal settlements'], connections:['Migration','Megacities'] },
+          { term:'Megacities', definition:'Cities with over 10 million people', example:'Tokyo, Japan', causes:['Migration','Economic opportunities','Industrialization'], effects:['Traffic congestion','Pollution','Housing shortages'], connections:['Urbanization'] },
+          { term:'Metacities', definition:'Cities with over 20 million people', example:'Tokyo, Japan', causes:['Same drivers as megacities but at extreme scale'], effects:['Extreme overcrowding','Infrastructure challenges'], connections:['Megacities'] },
+          { term:'Periphery countries', definition:'Less developed countries with low industrialization', example:'Nigeria', causes:['Limited resources','Colonial history'], effects:['High urban growth','Poverty'], connections:['Urbanization'] },
+          { term:'Semi-periphery countries', definition:'Countries between developed and developing', example:'Brazil', causes:['Industrializing economies'], effects:['Mixed urban development'], connections:['Core-periphery model'] },
+          { term:'Core countries', definition:'Highly developed countries', example:'United States', causes:['Strong economies'], effects:['Slower urban growth'], connections:['Globalization'] }
+        ],
+        'City Structure and Models': [
+          { term:'Urban hierarchy', definition:'Ranking of cities by size and function', example:'NYC > smaller cities', connections:['Rank-size rule'] },
+          { term:'Rank-size rule', definition:'City sizes follow a predictable pattern where the nth city is 1/n the size of the largest', example:'U.S. city distribution', connections:['Urban hierarchy'] },
+          { term:'Primate city', definition:'One city that dominates a country, more than twice the size of the second largest', example:'Paris, France', connections:['Uneven development'] },
+          { term:'Gravity model', definition:'Interaction between places depends on population size and distance', example:'NYC and Philadelphia interaction', connections:['Migration'] },
+          { term:'Central place theory', definition:'Cities are distributed to serve surrounding areas with goods and services', example:'Retail distribution patterns', connections:['Threshold','Range'] },
+          { term:'Threshold', definition:'Minimum number of customers needed to support a business or service', connections:['Central place theory'] },
+          { term:'Range', definition:'Maximum distance people are willing to travel for a good or service', connections:['Central place theory'] },
+          { term:'CBD', definition:'The commercial and business center of a city with highest land values', example:'Manhattan, New York', effects:['High land value','Dense commercial activity'], connections:['Bid-rent theory'] },
+          { term:'Bid-rent theory', definition:'Land value decreases with distance from the city center', connections:['CBD'] },
+          { term:'Concentric zone model', definition:'Burgess model showing city growth in concentric rings outward from the CBD', connections:['Sector model','Multiple nuclei model'] },
+          { term:'Sector model', definition:'Hoyt model showing city development in wedge-shaped sectors along transportation routes', connections:['Concentric zone model'] },
+          { term:'Multiple nuclei model', definition:'Harris-Ullman model showing cities develop around multiple centers of activity, not just one CBD', connections:['Edge cities'] },
+          { term:'Galactic city model', definition:'Model of a sprawling urban area with a CBD surrounded by suburban developments, edge cities, and a beltway', connections:['Edge cities','Suburbanization'] },
+          { term:'Griffin-Ford model', definition:'Model of Latin American cities with a CBD, commercial spine, and zones of decreasing wealth toward the periphery', example:'Mexico City', connections:['Primate city'] }
+        ],
+        'Urban Land Use': [
+          { term:'Suburbanization', definition:'Movement of people from cities to suburbs', example:'Growth of suburbs around Chicago after WWII', causes:['Automobiles','Desire for space','Affordable housing'], effects:['Urban sprawl','Racial/economic segregation'], connections:['Urban sprawl'] },
+          { term:'Urban sprawl', definition:'Unplanned expansion of cities into surrounding rural land', example:'Phoenix, Arizona', causes:['Car dependence','Cheap land on periphery'], effects:['Pollution','Loss of farmland'], connections:['Suburbanization'] },
+          { term:'Urban decentralization', definition:'Movement of people and jobs away from city centers to suburbs and edge cities', example:'U.S. suburban office parks', causes:['Transportation improvements','Lower suburban land costs'], effects:['Decline of CBD importance'], connections:['Edge cities'] },
+          { term:'Edge city', definition:'A suburban area with significant employment and commercial services, functioning like a second downtown', example:'Tysons Corner, Virginia', causes:['Decentralization','Highway construction'], effects:['Reduced CBD importance'], connections:['Suburbanization'] },
+          { term:'Exurb', definition:'A rural-like area beyond the suburbs where commuters live', example:'Outer areas of Dallas-Fort Worth', causes:['Desire for space','Remote work'], effects:['Longer commutes','Farmland conversion'], connections:['Urban sprawl'] },
+          { term:'Boomburb', definition:'A large, rapidly growing suburb with over 100,000 residents but no traditional downtown', example:'Mesa, Arizona', causes:['Population growth','Sunbelt migration'], effects:['Urban expansion'], connections:['Suburbanization'] },
+          { term:'Infill', definition:'Building on unused or underused land within existing urban areas', effects:['More efficient land use','Reduces sprawl'], connections:['Smart growth'] },
+          { term:'Mixed land use', definition:'Combining residential and commercial uses in the same area', effects:['Increased walkability','Reduced car dependence'], connections:['Smart growth','New Urbanism'] },
+          { term:'Transportation-oriented development', definition:'Compact, mixed-use development centered around public transit stations', effects:['Reduced car dependency','Lower emissions'], connections:['Smart growth'] }
+        ],
+        'Urban Sustainability': [
+          { term:'Smart growth', definition:'Urban planning approach that focuses on compact, sustainable development', effects:['Less sprawl','Walkable communities','Preserved open space'], connections:['New Urbanism','Greenbelts'] },
+          { term:'New Urbanism', definition:'Design philosophy promoting walkable, mixed-use neighborhoods with a sense of community', connections:['Smart growth'] },
+          { term:'Greenbelts', definition:'Protected areas of undeveloped land surrounding cities to prevent sprawl', effects:['Limits urban expansion','Preserves nature'], connections:['Smart growth','Urban growth boundary'] },
+          { term:'Urban growth boundary', definition:'A legal boundary set around a city to limit outward expansion', connections:['Greenbelts','Smart growth'] },
+          { term:'Urban sustainability', definition:'Meeting the needs of the present urban population without compromising the ability of future generations', connections:['Ecological footprint','Smart growth'] },
+          { term:'Ecological footprint', definition:'The total environmental impact of a city\'s resource consumption and waste production', connections:['Urban sustainability'] },
+          { term:'Brownfields', definition:'Abandoned or contaminated former industrial sites within urban areas', effects:['Lower property values','Redevelopment opportunities'], connections:['Urban sustainability'] },
+          { term:'Deindustrialization', definition:'The decline of manufacturing and industrial activity in a city or region', example:'Detroit losing auto manufacturing jobs', effects:['Job loss','Population decline','Urban blight'], connections:['Brownfields'] },
+          { term:'Urban heat island', definition:'Urban areas experiencing significantly higher temperatures than surrounding rural areas due to concrete and asphalt', connections:['Urban sustainability','Ecological footprint'] }
+        ],
+        'Urban Problems and Inequality': [
+          { term:'De facto segregation', definition:'Racial or economic segregation that occurs by social practice rather than by law', connections:['Redlining','Blockbusting'] },
+          { term:'Redlining', definition:'Practice of denying loans or insurance to residents of certain neighborhoods based on race or ethnicity', effects:['Long-term wealth inequality','Neighborhood disinvestment'], connections:['De facto segregation'] },
+          { term:'Blockbusting', definition:'Real estate agents encouraging homeowners to sell cheaply by stoking fears of racial demographic change', connections:['De facto segregation','White flight'] },
+          { term:'Gentrification', definition:'Wealthier people moving into and renovating lower-income neighborhoods, raising property values', effects:['Displacement of long-term residents','Rising rents','Improved infrastructure'], connections:['Urban renewal'] },
+          { term:'Squatter settlement', definition:'Informal housing areas built without legal permission, often lacking basic services', example:'Favelas in Rio de Janeiro, Brazil', connections:['Periphery countries','Urbanization'] },
+          { term:'Environmental injustice', definition:'The disproportionate exposure of poor and minority communities to pollution and environmental hazards', connections:['Urban sustainability'] },
+          { term:'World city', definition:'A major global center of economic, political, and cultural influence', example:'New York City, London, Tokyo', causes:['Global trade','Financial markets'], effects:['High economic influence','International migration'], connections:['Globalization','Urban hierarchy'] },
+          { term:'White flight', definition:'Movement of white residents from cities to suburbs, often driven by racial tensions', connections:['Suburbanization','De facto segregation'] },
+          { term:'Eminent domain', definition:'Government power to take private property for public use with compensation', connections:['Urban redevelopment'] },
+          { term:'Food desert', definition:'Area with limited access to affordable and nutritious food, often in low-income urban neighborhoods', connections:['Environmental injustice','Urban problems'] }
+        ]
+      }
+    };
+
     function showUnitDetail(unitNum) {
       currentUnit = unitNum;
       const unit = unitData[unitNum];
@@ -2029,7 +2350,32 @@
         `;
       }
 
-      if (unit.items.length === 0 && !unitQuizzes) {
+      // Review flashcard expandable item
+      const unitReview = reviewData[unitNum];
+      if (unitReview) {
+        const categories = Object.keys(unitReview);
+        html += `
+          <button class="sidebar-item-expand${currentView === 'review' ? ' open' : ''}" id="rev-expand">
+            <div class="item-icon" style="background:var(--pastel-green);">&#127793;</div>
+            <span class="item-label">Review</span>
+            <span class="expand-arrow">&#9654;</span>
+          </button>
+          <div class="expand-children${currentView === 'review' ? ' open' : ''}" id="rev-children">
+            <button class="sidebar-item" data-rev-cat="Overall">
+              <div class="item-icon" style="background:var(--pastel-green-dark);">&#9733;</div>
+              <span class="item-label">Overall</span>
+            </button>
+            ${categories.map(cat => `
+              <button class="sidebar-item" data-rev-cat="${cat}">
+                <div class="item-icon" style="background:var(--pastel-green);">&#128209;</div>
+                <span class="item-label">${cat}</span>
+              </button>
+            `).join('')}
+          </div>
+        `;
+      }
+
+      if (unit.items.length === 0 && !unitQuizzes && !unitReview) {
         html = '<div class="unit-empty">Coming soon</div>';
       }
 
@@ -2076,6 +2422,27 @@
           detailItems.querySelectorAll('.sidebar-item').forEach(b => b.classList.remove('active'));
           btn.classList.add('active');
           showReadingQuizTopic(unitNum, btn.dataset.rqTopic);
+          closeSidebar();
+        });
+      });
+
+      // Bind review expand toggle
+      const revExpandBtn = document.getElementById('rev-expand');
+      const revChildren = document.getElementById('rev-children');
+      if (revExpandBtn && revChildren) {
+        revExpandBtn.addEventListener('click', () => {
+          revExpandBtn.classList.toggle('open');
+          revChildren.classList.toggle('open');
+        });
+      }
+
+      // Bind review category clicks
+      detailItems.querySelectorAll('.sidebar-item[data-rev-cat]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          currentView = 'review';
+          detailItems.querySelectorAll('.sidebar-item').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          showReviewCategory(unitNum, btn.dataset.revCat);
           closeSidebar();
         });
       });
@@ -2135,6 +2502,8 @@
       document.getElementById('map').style.display = '';
       const existing = document.getElementById('reading-quiz-container');
       if (existing) existing.remove();
+      const revExisting = document.getElementById('review-container');
+      if (revExisting) revExisting.remove();
     }
 
     // ── Reading Quiz Data ──
@@ -3605,12 +3974,173 @@
       }
     };
 
+    // ── Review System Functions ──
+    function getReviewLevels(unitNum) {
+      const key = `reviewLevels_unit${unitNum}`;
+      const stored = localStorage.getItem(key);
+      if (stored) return JSON.parse(stored);
+      // Initialize all cards at level 1
+      const levels = {};
+      const unitReview = reviewData[unitNum];
+      if (!unitReview) return levels;
+      for (const cat of Object.keys(unitReview)) {
+        for (const card of unitReview[cat]) {
+          levels[card.term] = 1;
+        }
+      }
+      localStorage.setItem(key, JSON.stringify(levels));
+      return levels;
+    }
+
+    function saveReviewLevels(unitNum, levels) {
+      localStorage.setItem(`reviewLevels_unit${unitNum}`, JSON.stringify(levels));
+    }
+
+    function showReviewCategory(unitNum, categoryName) {
+      const unitReview = reviewData[unitNum];
+      if (!unitReview) return;
+
+      let cards = [];
+      if (categoryName === 'Overall') {
+        for (const cat of Object.keys(unitReview)) {
+          cards = cards.concat(unitReview[cat]);
+        }
+      } else {
+        cards = [...unitReview[categoryName]];
+      }
+
+      document.getElementById('map').style.display = 'none';
+      let existing = document.getElementById('reading-quiz-container');
+      if (existing) existing.remove();
+      existing = document.getElementById('review-container');
+      if (existing) existing.remove();
+
+      const container = document.createElement('div');
+      container.id = 'review-container';
+      container.className = 'review-view';
+      document.querySelector('.main-area').appendChild(container);
+      document.getElementById('prompt-bar').innerHTML = `<span>Review &mdash; ${categoryName}</span>`;
+
+      const levels = getReviewLevels(unitNum);
+
+      // Filter to cards not yet mastered (level < 5), shuffle
+      let studyCards = cards.filter(c => (levels[c.term] || 1) < 5);
+      // Sort by level ascending so lowest-level cards come first
+      studyCards.sort((a, b) => (levels[a.term] || 1) - (levels[b.term] || 1));
+
+      let currentIdx = 0;
+
+      function renderState() {
+        // Recompute level counts
+        const lvlCounts = [0, 0, 0, 0, 0];
+        for (const c of cards) {
+          const lv = levels[c.term] || 1;
+          lvlCounts[lv - 1]++;
+        }
+        const mastered = lvlCounts[4];
+        const pct = Math.round((mastered / cards.length) * 100);
+
+        let html = '';
+        html += `<div class="review-header"><div class="review-title">Review: ${categoryName}</div><div class="review-category">${cards.length} terms &middot; ${mastered} mastered</div></div>`;
+
+        // Level boxes
+        html += '<div class="review-levels">';
+        for (let i = 0; i < 5; i++) {
+          html += `<div class="review-level-box${i === 4 && mastered > 0 ? ' active' : ''}"><div class="level-label">L${i+1}</div><div class="level-count">${lvlCounts[i]}</div></div>`;
+        }
+        html += '</div>';
+
+        // Progress bar
+        html += `<div class="review-progress-bar"><div class="review-progress-fill" style="width:${pct}%"></div></div>`;
+
+        if (studyCards.length === 0 || currentIdx >= studyCards.length) {
+          html += `<div class="review-done"><h2>All cards mastered!</h2><p>You've completed all ${cards.length} flashcards in this set.</p><button class="review-restart-btn" id="review-restart">Study Again from Scratch</button></div>`;
+          container.innerHTML = html;
+          const restartBtn = document.getElementById('review-restart');
+          if (restartBtn) {
+            restartBtn.addEventListener('click', () => {
+              for (const c of cards) levels[c.term] = 1;
+              saveReviewLevels(unitNum, levels);
+              studyCards = [...cards];
+              studyCards.sort(() => Math.random() - 0.5);
+              currentIdx = 0;
+              renderState();
+            });
+          }
+          return;
+        }
+
+        const card = studyCards[currentIdx];
+        const cardLevel = levels[card.term] || 1;
+
+        // Card area
+        html += '<div class="review-card-area"><div class="review-card-wrapper" id="review-card">';
+        // Front
+        html += `<div class="review-card-front"><div class="term-text">${card.term}</div><div class="flip-hint">Click to reveal &middot; Level ${cardLevel}/5</div></div>`;
+        // Back
+        html += '<div class="review-card-back">';
+        html += `<div class="def-text">${card.definition}</div>`;
+        if (card.example) html += `<div class="card-section"><strong>Example:</strong> ${card.example}</div>`;
+        if (card.causes && card.causes.length) html += `<div class="card-section"><strong>Causes:</strong><ul>${card.causes.map(c=>'<li>'+c+'</li>').join('')}</ul></div>`;
+        if (card.effects && card.effects.length) html += `<div class="card-section"><strong>Effects:</strong><ul>${card.effects.map(e=>'<li>'+e+'</li>').join('')}</ul></div>`;
+        if (card.connections && card.connections.length) html += `<div class="card-section"><strong>Connections:</strong> ${card.connections.join(', ')}</div>`;
+        html += '</div>';
+        html += '</div></div>';
+
+        // Buttons (hidden until flipped)
+        html += '<div class="review-buttons" id="review-btns" style="visibility:hidden;"><button class="review-btn study-again" id="review-again">Study Again</button><button class="review-btn got-it" id="review-got">Got it</button></div>';
+
+        container.innerHTML = html;
+
+        // Bind flip
+        const cardEl = document.getElementById('review-card');
+        const btns = document.getElementById('review-btns');
+        let flipped = false;
+        cardEl.addEventListener('click', () => {
+          if (!flipped) {
+            cardEl.classList.add('flipped');
+            btns.style.visibility = 'visible';
+            flipped = true;
+          }
+        });
+
+        // Got it
+        document.getElementById('review-got').addEventListener('click', () => {
+          const newLevel = Math.min((levels[card.term] || 1) + 1, 5);
+          levels[card.term] = newLevel;
+          saveReviewLevels(unitNum, levels);
+          if (newLevel >= 5) {
+            // Remove from study deck
+            studyCards.splice(currentIdx, 1);
+            // Don't increment currentIdx since array shifted
+          } else {
+            currentIdx++;
+          }
+          if (currentIdx >= studyCards.length && studyCards.length > 0) currentIdx = 0;
+          renderState();
+        });
+
+        // Study Again
+        document.getElementById('review-again').addEventListener('click', () => {
+          levels[card.term] = 1;
+          saveReviewLevels(unitNum, levels);
+          currentIdx++;
+          if (currentIdx >= studyCards.length) currentIdx = 0;
+          renderState();
+        });
+      }
+
+      renderState();
+    }
+
     function showReadingQuizTopic(unitNum, topicId) {
       const unit = unitData[unitNum];
       const topicData = readingQuizData[unitNum][topicId];
       document.getElementById('map').style.display = 'none';
       let container = document.getElementById('reading-quiz-container');
       if (container) container.remove();
+      const revExisting = document.getElementById('review-container');
+      if (revExisting) revExisting.remove();
 
       container = document.createElement('div');
       container.id = 'reading-quiz-container';
