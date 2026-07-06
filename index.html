@@ -1321,6 +1321,192 @@
       padding: 30px 0;
     }
 
+    .vocab-tabs { flex-wrap: wrap; }
+
+    .vocab-mode-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      max-width: 750px;
+      margin: 0 auto;
+      width: 100%;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      flex-wrap: wrap;
+    }
+
+    .vocab-mistakes { color: var(--text-muted); }
+
+    /* Matching */
+    .vocab-match-grid {
+      display: flex;
+      gap: 12px;
+      max-width: 750px;
+      margin: 14px auto 0;
+      width: 100%;
+    }
+
+    .vocab-match-col {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      min-width: 0;
+    }
+
+    .vocab-match-cell {
+      padding: 12px 14px;
+      border: 2px solid var(--white-50);
+      background: var(--white-90);
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 0.82rem;
+      line-height: 1.4;
+      text-align: left;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: background 0.15s, border-color 0.15s, opacity 0.3s, transform 0.1s;
+    }
+
+    .vocab-match-term { font-weight: 700; color: var(--text-primary); }
+    .vocab-match-cell:hover { border-color: var(--pastel-purple); }
+    .vocab-match-cell.sel { border-color: var(--pastel-purple-dark); background: var(--pastel-purple); color: var(--text-primary); }
+    .vocab-match-cell.wrong { border-color: #e57373; background: rgba(229, 115, 115, 0.25); }
+    .vocab-match-cell.matched { opacity: 0; pointer-events: none; }
+
+    /* Multiple choice + game shared */
+    .vocab-mc-card {
+      background: var(--white-90);
+      backdrop-filter: blur(12px);
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--white-50);
+      max-width: 640px;
+      margin: 4px auto 0;
+      width: 100%;
+    }
+
+    .vocab-mc-q {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      line-height: 1.5;
+      margin-bottom: 18px;
+      text-align: center;
+    }
+
+    .vocab-mc-opts { display: flex; flex-direction: column; gap: 10px; }
+
+    .vocab-mc-opt {
+      padding: 14px 18px;
+      border: 2px solid var(--white-50);
+      background: var(--white-80);
+      border-radius: 14px;
+      font-family: inherit;
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.15s;
+    }
+
+    .vocab-mc-opt:hover { background: var(--pastel-purple); border-color: var(--pastel-purple); }
+    .vocab-mc-opt.answered { pointer-events: none; }
+    .vocab-mc-opt.correct { background: var(--pastel-green); border-color: var(--pastel-green-dark); }
+    .vocab-mc-opt.wrong { background: rgba(229, 115, 115, 0.3); border-color: #e57373; }
+
+    .vocab-next-btn, .vocab-again-btn {
+      display: block;
+      margin: 18px auto 0;
+      max-width: 300px;
+      background: var(--pastel-purple);
+      border-color: var(--pastel-purple-dark);
+    }
+
+    /* Result / start screens */
+    .vocab-result {
+      text-align: center;
+      max-width: 480px;
+      margin: 30px auto 0;
+      background: var(--white-90);
+      backdrop-filter: blur(12px);
+      border-radius: 22px;
+      padding: 36px 28px;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--white-50);
+    }
+
+    .vocab-result-emoji { font-size: 3rem; margin-bottom: 8px; }
+    .vocab-result-title { font-size: 1.7rem; font-weight: 800; color: var(--text-primary); }
+    .vocab-result-sub { font-size: 0.95rem; color: var(--text-muted); margin-top: 6px; line-height: 1.5; }
+
+    /* Speed game bars */
+    .vocab-game-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 640px;
+      margin: 0 auto;
+      width: 100%;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .vocab-game-time { font-size: 1.3rem; color: var(--pastel-purple-dark); }
+    .vocab-game-score { font-size: 0.85rem; color: var(--text-secondary); }
+
+    .vocab-game-timerbar {
+      max-width: 640px;
+      margin: 8px auto 0;
+      width: 100%;
+      height: 8px;
+      background: var(--white-50);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .vocab-game-timerfill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--pastel-purple-dark), var(--pastel-pink-dark));
+      transition: width 1s linear;
+    }
+
+    /* Tips */
+    .tips-card {
+      background: var(--white-90);
+      backdrop-filter: blur(12px);
+      border-radius: 18px;
+      padding: 20px 24px;
+      box-shadow: var(--shadow-sm);
+      border-left: 5px solid var(--pastel-yellow);
+      margin-bottom: 16px;
+    }
+
+    .tips-card-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 10px;
+    }
+
+    .tips-list {
+      margin: 0;
+      padding-left: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .tips-list li {
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: var(--text-secondary);
+    }
+
     /* FRQ styles */
     .frq-card {
       background: var(--white-90);
@@ -1678,6 +1864,14 @@
           </div>
           <span class="unit-arrow">&#9654;</span>
         </button>
+        <button class="unit-tab" id="tips-tab">
+          <div class="unit-number" style="background:var(--pastel-yellow);">&#128161;</div>
+          <div class="unit-info">
+            <span class="unit-label">Tips</span>
+            <span class="unit-subtitle">Study &amp; exam strategies</span>
+          </div>
+          <span class="unit-arrow">&#9654;</span>
+        </button>
       </div>
 
       <!-- Panel 2: Unit detail (populated by JS) -->
@@ -1694,7 +1888,7 @@
         <div id="detail-items"></div>
       </div>
     </div>
-    <div class="sidebar-credit">Created By <a href="https://meckman2025.github.io/portfolio/" target="_blank" rel="noopener">Kayden &lt;3</a></div>
+    <div class="sidebar-credit">Inputs by <a href="https://meckman2025.github.io/portfolio/" target="_blank" rel="noopener">Kayden &lt;3</a></div>
   </div>
 
   <header>
@@ -2935,6 +3129,8 @@
       if (revExisting) revExisting.remove();
       const vocabExisting = document.getElementById('vocab-container');
       if (vocabExisting) vocabExisting.remove();
+      const tipsExisting = document.getElementById('tips-container');
+      if (tipsExisting) tipsExisting.remove();
     }
 
     // ── Reading Quiz Data ──
@@ -4406,9 +4602,72 @@
     };
 
     // ── Review System Functions (FRQ + MC) ──
+    const tipsData = [
+      {
+        title: '&#128218; How to use this tool',
+        tips: [
+          'Pick a unit, open <b>Vocab</b>, and start with <b>Flashcards</b> to learn terms, then test yourself with <b>Matching</b> and <b>Multiple Choice</b>.',
+          'Use <b>Matching</b> most &mdash; it mirrors how vocab is tested in class.',
+          'The <b>Speed</b> game is great for a quick 60-second warm-up before a quiz.',
+          'Use the map quizzes to lock in regions and countries for the stimulus questions.',
+        ]
+      },
+      {
+        title: '&#9989; Multiple-choice strategy',
+        tips: [
+          'Read the question <i>before</i> the stimulus (map, chart, cartoon) so you know what to look for.',
+          'Eliminate two wrong answers first &mdash; AP MC almost always has two obvious distractors.',
+          'Watch for scale words: <b>local, regional, national, global</b> change the correct answer.',
+          'Answer every question &mdash; there is no penalty for guessing.',
+        ]
+      },
+      {
+        title: '&#9997;&#65039; FRQ strategy',
+        tips: [
+          'There are no stimulus-free points to skip &mdash; write to the <b>task verb</b>: Identify, Describe, Explain, Compare.',
+          '<b>Describe</b> = say what it looks like. <b>Explain</b> = say <i>why/how</i> (cause &rarr; effect).',
+          'Always give a real-world <b>example</b> when asked &mdash; specific places score points.',
+          'Answer each part (A&ndash;G) in order and label them; don\'t bury answers in a paragraph.',
+        ]
+      },
+      {
+        title: '&#128170; Study habits',
+        tips: [
+          'Study in short, spaced sessions &mdash; 20 minutes daily beats one long cram.',
+          'Teach a term out loud in your own words; if you can\'t, you don\'t know it yet.',
+          'Shuffle your flashcards so you don\'t just memorize the order.',
+          'Focus extra time on the terms you miss in Matching and Multiple Choice.',
+        ]
+      },
+    ];
+
+    function showTipsView() {
+      document.getElementById('map').style.display = 'none';
+      ['reading-quiz-container', 'review-container', 'vocab-container', 'tips-container'].forEach(id => {
+        const el = document.getElementById(id); if (el) el.remove();
+      });
+
+      const container = document.createElement('div');
+      container.id = 'tips-container';
+      container.className = 'vocab-view';
+      document.querySelector('.main-area').appendChild(container);
+      document.getElementById('prompt-bar').innerHTML = '<span>Study Tips</span>';
+
+      let html = '<div class="review-header"><div class="review-title">Study &amp; Exam Tips</div><div class="review-subtitle">Make the most of your prep</div></div>';
+      html += '<div class="review-tab-content">';
+      tipsData.forEach(section => {
+        html += `<div class="tips-card"><div class="tips-card-title">${section.title}</div><ul class="tips-list">`;
+        section.tips.forEach(t => { html += `<li>${t}</li>`; });
+        html += '</ul></div>';
+      });
+      html += '</div>';
+      container.innerHTML = html;
+    }
+
     function showVocabView(unitNum, setKey) {
       const sets = vocabularyData[unitNum] || [];
       if (!sets.length) return;
+      const unitPool = sets.flatMap(s => s.words);
 
       let words, headerLabel, promptLabel;
       if (setKey === 'all' || setKey == null) {
@@ -4431,6 +4690,8 @@
       if (existing) existing.remove();
       existing = document.getElementById('vocab-container');
       if (existing) existing.remove();
+      existing = document.getElementById('tips-container');
+      if (existing) existing.remove();
 
       const container = document.createElement('div');
       container.id = 'vocab-container';
@@ -4439,37 +4700,76 @@
       document.getElementById('prompt-bar').innerHTML = `<span>Vocabulary &mdash; ${promptLabel}</span>`;
 
       const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      const shuffleArr = (a) => { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1));[a[i], a[j]] = [a[j], a[i]]; } return a; };
 
       let activeTab = 'cards';
+      // flashcard state
       let order = words.map((_, i) => i);
       let pos = 0;
       let flipped = false;
+      // glossary
       let query = '';
+      // matching state
+      const MATCH_SIZE = Math.min(5, words.length);
+      const matchRounds = Math.ceil(words.length / MATCH_SIZE);
+      let matchIdx = [], matchRound = 0, matchMistakes = 0, matchDone = false;
+      function resetMatching() { matchIdx = shuffleArr(words.map((_, i) => i)); matchRound = 0; matchMistakes = 0; matchDone = false; }
+      // multiple choice state
+      let mcOrder = [], mcPos = 0, mcScore = 0, mcSel = null, mcOpts = null, mcDone = false;
+      function resetMC() { mcOrder = shuffleArr(words.map((_, i) => i)); mcPos = 0; mcScore = 0; mcSel = null; mcOpts = null; mcDone = false; }
+      // speed game state
+      let gameTimer = null, gameStarted = false, gameActive = false, gameScore = 0, gameStreak = 0, gameBest = 0, gameTime = 60, gameOrder = [], gamePos = 0, gameOpts = null;
+      function stopGame() { if (gameTimer) { clearInterval(gameTimer); gameTimer = null; } gameActive = false; }
 
-      function shuffle() {
-        for (let i = order.length - 1; i > 0; i--) {
-          const j = Math.floor(Math.random() * (i + 1));
-          [order[i], order[j]] = [order[j], order[i]];
+      function shuffleFlash() { shuffleArr(order); pos = 0; flipped = false; }
+
+      // Build 4 answer options (correct term + 3 distractors from the whole unit)
+      function optionsFor(wi) {
+        const correct = words[wi].term;
+        const seen = new Set([correct.toLowerCase()]);
+        const distract = [];
+        const pool = shuffleArr(unitPool.slice());
+        for (const w of pool) {
+          if (distract.length >= 3) break;
+          const k = w.term.toLowerCase();
+          if (!seen.has(k)) { seen.add(k); distract.push(w.term); }
         }
-        pos = 0; flipped = false;
+        return shuffleArr([correct, ...distract]);
       }
+
+      const TABS = [['cards', 'Flashcards'], ['match', 'Matching'], ['mc', 'Multiple Choice'], ['game', 'Speed'], ['glossary', 'Glossary']];
 
       function render() {
         let html = '';
         html += `<div class="review-header"><div class="review-title">${esc(headerLabel)}</div><div class="review-subtitle">${words.length} terms &middot; from PearDeck</div></div>`;
-        html += '<div class="review-section-tabs">';
-        html += `<button class="review-section-tab${activeTab === 'cards' ? ' active' : ''}" data-tab="cards">Flashcards</button>`;
-        html += `<button class="review-section-tab${activeTab === 'glossary' ? ' active' : ''}" data-tab="glossary">Glossary</button>`;
+        html += '<div class="review-section-tabs vocab-tabs">';
+        for (const [k, label] of TABS) html += `<button class="review-section-tab${activeTab === k ? ' active' : ''}" data-tab="${k}">${label}</button>`;
         html += '</div>';
         html += '<div class="review-tab-content">';
-        html += activeTab === 'cards' ? renderCards() : renderGlossary();
+        if (activeTab === 'cards') html += renderCards();
+        else if (activeTab === 'match') html += renderMatching();
+        else if (activeTab === 'mc') html += renderMC();
+        else if (activeTab === 'game') html += renderGame();
+        else html += renderGlossary();
         html += '</div>';
         container.innerHTML = html;
 
         container.querySelectorAll('.review-section-tab').forEach(btn => {
-          btn.addEventListener('click', () => { activeTab = btn.dataset.tab; render(); });
+          btn.addEventListener('click', () => {
+            const t = btn.dataset.tab;
+            if (activeTab === 'game' && t !== 'game') stopGame();
+            activeTab = t;
+            if (t === 'match') resetMatching();
+            else if (t === 'mc') resetMC();
+            else if (t === 'game') { stopGame(); gameStarted = false; }
+            render();
+          });
         });
-        if (activeTab === 'cards') bindCards(); else bindGlossary();
+        if (activeTab === 'cards') bindCards();
+        else if (activeTab === 'match') bindMatching();
+        else if (activeTab === 'mc') bindMC();
+        else if (activeTab === 'game') bindGame();
+        else bindGlossary();
       }
 
       function renderCards() {
@@ -4506,7 +4806,177 @@
         const shuf = container.querySelector('#vocab-shuffle');
         if (prev) prev.addEventListener('click', () => { pos = (pos - 1 + words.length) % words.length; flipped = false; render(); });
         if (next) next.addEventListener('click', () => { pos = (pos + 1) % words.length; flipped = false; render(); });
-        if (shuf) shuf.addEventListener('click', () => { shuffle(); render(); });
+        if (shuf) shuf.addEventListener('click', () => { shuffleFlash(); render(); });
+      }
+
+      // ── Matching (test-style) ──
+      function renderMatching() {
+        if (!matchIdx.length) resetMatching();
+        if (matchDone) {
+          return `<div class="vocab-result"><div class="vocab-result-emoji">&#127881;</div>
+            <div class="vocab-result-title">All matched!</div>
+            <div class="vocab-result-sub">${matchMistakes} mistake${matchMistakes === 1 ? '' : 's'}</div>
+            <button class="vocab-nav-btn vocab-again-btn" id="match-again">Play again</button></div>`;
+        }
+        const startI = matchRound * MATCH_SIZE;
+        const batch = matchIdx.slice(startI, startI + MATCH_SIZE);
+        const defs = shuffleArr(batch.slice());
+        let html = '';
+        html += `<div class="vocab-mode-bar"><span>Match each term to its definition${matchRounds > 1 ? ' &middot; Round ' + (matchRound + 1) + ' of ' + matchRounds : ''}</span><span class="vocab-mistakes">Mistakes: <b id="match-mistakes">${matchMistakes}</b></span></div>`;
+        html += '<div class="vocab-match-grid"><div class="vocab-match-col">';
+        batch.forEach(wi => { html += `<button class="vocab-match-cell vocab-match-term" data-wi="${wi}">${esc(words[wi].term)}</button>`; });
+        html += '</div><div class="vocab-match-col">';
+        defs.forEach(wi => { html += `<button class="vocab-match-cell vocab-match-def" data-wi="${wi}">${esc(words[wi].definition)}</button>`; });
+        html += '</div></div>';
+        return html;
+      }
+
+      function bindMatching() {
+        if (matchDone) {
+          const again = container.querySelector('#match-again');
+          if (again) again.addEventListener('click', () => { resetMatching(); render(); });
+          return;
+        }
+        let selTerm = null, selDef = null, matched = 0;
+        const startI = matchRound * MATCH_SIZE;
+        const batchLen = matchIdx.slice(startI, startI + MATCH_SIZE).length;
+        const mEl = container.querySelector('#match-mistakes');
+        function evalPair() {
+          if (!selTerm || !selDef) return;
+          const a = selTerm, b = selDef;
+          if (a.dataset.wi === b.dataset.wi) {
+            a.classList.add('matched'); b.classList.add('matched');
+            a.classList.remove('sel'); b.classList.remove('sel');
+            a.disabled = true; b.disabled = true;
+            selTerm = null; selDef = null; matched++;
+            if (matched === batchLen) {
+              setTimeout(() => {
+                if (matchRound + 1 < matchRounds) { matchRound++; render(); }
+                else { matchDone = true; render(); }
+              }, 450);
+            }
+          } else {
+            matchMistakes++; if (mEl) mEl.textContent = matchMistakes;
+            a.classList.add('wrong'); b.classList.add('wrong');
+            const x = a, y = b; selTerm = null; selDef = null;
+            setTimeout(() => { x.classList.remove('wrong', 'sel'); y.classList.remove('wrong', 'sel'); }, 650);
+          }
+        }
+        container.querySelectorAll('.vocab-match-term').forEach(el => el.addEventListener('click', () => {
+          if (el.disabled) return;
+          if (selTerm) selTerm.classList.remove('sel');
+          selTerm = el; el.classList.add('sel'); evalPair();
+        }));
+        container.querySelectorAll('.vocab-match-def').forEach(el => el.addEventListener('click', () => {
+          if (el.disabled) return;
+          if (selDef) selDef.classList.remove('sel');
+          selDef = el; el.classList.add('sel'); evalPair();
+        }));
+      }
+
+      // ── Multiple Choice ──
+      function renderMC() {
+        if (!mcOrder.length) resetMC();
+        if (mcDone) {
+          const pct = Math.round(mcScore / mcOrder.length * 100);
+          return `<div class="vocab-result"><div class="vocab-result-emoji">${pct >= 80 ? '&#127775;' : pct >= 50 ? '&#128077;' : '&#128218;'}</div>
+            <div class="vocab-result-title">${mcScore} / ${mcOrder.length}</div>
+            <div class="vocab-result-sub">${pct}% correct</div>
+            <button class="vocab-nav-btn vocab-again-btn" id="mc-again">Try again</button></div>`;
+        }
+        const wi = mcOrder[mcPos];
+        if (!mcOpts) mcOpts = optionsFor(wi);
+        const correct = words[wi].term;
+        let html = '';
+        html += `<div class="review-progress">Question ${mcPos + 1} of ${mcOrder.length} &middot; Score ${mcScore}
+          <div class="review-progress-bar"><div class="review-progress-fill" style="width:${(mcPos / mcOrder.length) * 100}%"></div></div></div>`;
+        html += `<div class="vocab-mc-card"><div class="vocab-mc-q">${esc(words[wi].definition)}</div><div class="vocab-mc-opts">`;
+        mcOpts.forEach((opt, i) => {
+          let cls = 'vocab-mc-opt';
+          if (mcSel !== null) {
+            cls += ' answered';
+            if (opt.toLowerCase() === correct.toLowerCase()) cls += ' correct';
+            else if (opt === mcSel) cls += ' wrong';
+          }
+          html += `<button class="${cls}" data-i="${i}">${esc(opt)}</button>`;
+        });
+        html += '</div>';
+        if (mcSel !== null) html += `<button class="vocab-nav-btn vocab-next-btn" id="mc-next">${mcPos + 1 < mcOrder.length ? 'Next &#8594;' : 'See results'}</button>`;
+        html += '</div>';
+        return html;
+      }
+
+      function bindMC() {
+        if (mcDone) { const a = container.querySelector('#mc-again'); if (a) a.addEventListener('click', () => { resetMC(); render(); }); return; }
+        if (mcSel === null) {
+          container.querySelectorAll('.vocab-mc-opt').forEach(el => el.addEventListener('click', () => {
+            mcSel = mcOpts[+el.dataset.i];
+            const correct = words[mcOrder[mcPos]].term;
+            if (mcSel.toLowerCase() === correct.toLowerCase()) mcScore++;
+            render();
+          }));
+        } else {
+          const n = container.querySelector('#mc-next');
+          if (n) n.addEventListener('click', () => {
+            mcPos++; mcSel = null; mcOpts = null;
+            if (mcPos >= mcOrder.length) mcDone = true;
+            render();
+          });
+        }
+      }
+
+      // ── Speed game (60-second blitz) ──
+      function renderGame() {
+        if (!gameStarted) {
+          return `<div class="vocab-result"><div class="vocab-result-emoji">&#9889;</div>
+            <div class="vocab-result-title">Speed Round</div>
+            <div class="vocab-result-sub">Answer as many as you can in 60 seconds!${gameBest ? '<br>Best: ' + gameBest : ''}</div>
+            <button class="vocab-nav-btn vocab-again-btn" id="game-start">Start</button></div>`;
+        }
+        if (!gameActive) {
+          if (gameScore > gameBest) gameBest = gameScore;
+          return `<div class="vocab-result"><div class="vocab-result-emoji">&#127937;</div>
+            <div class="vocab-result-title">${gameScore} correct</div>
+            <div class="vocab-result-sub">Best: ${gameBest}</div>
+            <button class="vocab-nav-btn vocab-again-btn" id="game-start">Play again</button></div>`;
+        }
+        const wi = gameOrder[gamePos % gameOrder.length];
+        if (!gameOpts) gameOpts = optionsFor(wi);
+        let html = '';
+        html += `<div class="vocab-game-bar"><span class="vocab-game-time" id="game-time">${gameTime}s</span><span class="vocab-game-score">Score ${gameScore} &middot; Streak ${gameStreak}</span></div>`;
+        html += `<div class="vocab-game-timerbar"><div class="vocab-game-timerfill" id="game-timerfill" style="width:${(gameTime / 60) * 100}%"></div></div>`;
+        html += `<div class="vocab-mc-card"><div class="vocab-mc-q">${esc(words[wi].definition)}</div><div class="vocab-mc-opts">`;
+        gameOpts.forEach((opt, i) => { html += `<button class="vocab-mc-opt" data-i="${i}">${esc(opt)}</button>`; });
+        html += '</div></div>';
+        return html;
+      }
+
+      function bindGame() {
+        const startBtn = container.querySelector('#game-start');
+        if (startBtn) { startBtn.addEventListener('click', startGame); return; }
+        container.querySelectorAll('.vocab-mc-opt').forEach(el => el.addEventListener('click', () => {
+          if (!gameActive) return;
+          const chosen = gameOpts[+el.dataset.i];
+          const correct = words[gameOrder[gamePos % gameOrder.length]].term;
+          if (chosen.toLowerCase() === correct.toLowerCase()) { gameScore++; gameStreak++; el.classList.add('correct'); }
+          else { gameStreak = 0; el.classList.add('wrong'); }
+          gamePos++; gameOpts = null;
+          setTimeout(() => { if (gameActive) render(); }, 160);
+        }));
+      }
+
+      function startGame() {
+        stopGame();
+        gameStarted = true; gameActive = true; gameScore = 0; gameStreak = 0; gameTime = 60;
+        gameOrder = shuffleArr(words.map((_, i) => i)); gamePos = 0; gameOpts = null;
+        render();
+        gameTimer = setInterval(() => {
+          if (!document.body.contains(container)) { clearInterval(gameTimer); gameTimer = null; return; }
+          gameTime--;
+          const t = container.querySelector('#game-time'); if (t) t.textContent = gameTime + 's';
+          const f = container.querySelector('#game-timerfill'); if (f) f.style.width = (gameTime / 60 * 100) + '%';
+          if (gameTime <= 0) { stopGame(); render(); }
+        }, 1000);
       }
 
       function renderGlossary() {
@@ -4574,6 +5044,8 @@
       existing = document.getElementById('review-container');
       if (existing) existing.remove();
       existing = document.getElementById('vocab-container');
+      if (existing) existing.remove();
+      existing = document.getElementById('tips-container');
       if (existing) existing.remove();
 
       const container = document.createElement('div');
@@ -4787,6 +5259,8 @@
       if (revExisting) revExisting.remove();
       const vocabExisting = document.getElementById('vocab-container');
       if (vocabExisting) vocabExisting.remove();
+      const tipsExisting = document.getElementById('tips-container');
+      if (tipsExisting) tipsExisting.remove();
 
       container = document.createElement('div');
       container.id = 'reading-quiz-container';
@@ -5125,7 +5599,15 @@
 
     // Unit tab clicks
     document.querySelectorAll('.unit-tab').forEach(tab => {
+      if (tab.id === 'tips-tab') return;
       tab.addEventListener('click', () => showUnitDetail(tab.dataset.unit));
+    });
+
+    // Tips tab click
+    document.getElementById('tips-tab').addEventListener('click', () => {
+      currentView = 'tips';
+      showTipsView();
+      closeSidebar();
     });
 
     // Back button
