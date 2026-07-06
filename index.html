@@ -1507,6 +1507,18 @@
       color: var(--text-secondary);
     }
 
+    .tips-card.plan-intro {
+      border-left-color: var(--pastel-purple);
+      background: linear-gradient(150deg, rgba(195, 177, 225, 0.18), rgba(168, 216, 234, 0.12)), var(--white-90);
+    }
+
+    .plan-intro-text {
+      margin: 0;
+      font-size: 0.92rem;
+      line-height: 1.65;
+      color: var(--text-secondary);
+    }
+
     /* FRQ styles */
     .frq-card {
       background: var(--white-90);
@@ -4641,6 +4653,18 @@
       },
     ];
 
+    const studyPlanData = {
+      intro: 'If you\'re staring at a huge list of vocab with no idea where to begin, don\'t worry &mdash; here\'s a simple week-by-week plan you can just follow. Nothing fancy; it\'s the routine that works if you stick with it. Use as much or as little as you need.',
+      sections: [
+        { title: '&#127919; Rule #1: A little every day', tips: ['I studied 20&ndash;30 minutes a day instead of cramming. Short, spaced-out practice is how vocab actually sticks.', 'Even on busy days I did one <b>Speed</b> round &mdash; it kept everything fresh.'] },
+        { title: '&#128197; My weekly rhythm', tips: ['<b>Early week:</b> learn the new lesson\'s terms with <b>Flashcards</b>.', '<b>Mid week:</b> test myself with <b>Matching</b> (that\'s the test format) then <b>Multiple Choice</b>.', '<b>Before the quiz:</b> replay the terms I kept missing, then a <b>Speed</b> round to lock it in.'] },
+        { title: '&#128260; How I used this tool', tips: ['Flashcards to learn &rarr; Matching to prove I knew it &rarr; Multiple Choice to simulate the test &rarr; Speed to make it fun.', 'The weekend before a unit test, I ran the <b>All terms</b> set for the whole unit.'] },
+        { title: '&#9997;&#65039; FRQ practice', tips: ['I practiced writing to the task verbs (Identify, Describe, Explain, Compare) and always backed it up with a real-world example.', 'I timed myself so the pace of the real exam felt normal.'] },
+        { title: '&#128218; Two weeks before the exam', tips: ['Reviewed every unit\'s <b>All terms</b> set, mixing units so I wasn\'t just memorizing the order.', 'Watched a review video for each unit and re-did the map quizzes.'] },
+        { title: '&#127769; The night before', tips: ['Light review only &mdash; a couple Speed rounds &mdash; then I slept. No cramming. Rest beats panic every time.'] },
+      ]
+    };
+
     function showTipsView() {
       document.getElementById('map').style.display = 'none';
       ['reading-quiz-container', 'review-container', 'vocab-container', 'tips-container'].forEach(id => {
@@ -4651,17 +4675,32 @@
       container.id = 'tips-container';
       container.className = 'vocab-view';
       document.querySelector('.main-area').appendChild(container);
-      document.getElementById('prompt-bar').innerHTML = '<span>Study Tips</span>';
+      document.getElementById('prompt-bar').innerHTML = '<span>Study Hub</span>';
 
-      let html = '<div class="review-header"><div class="review-title">Study &amp; Exam Tips</div><div class="review-subtitle">Make the most of your prep</div></div>';
-      html += '<div class="review-tab-content">';
-      tipsData.forEach(section => {
-        html += `<div class="tips-card"><div class="tips-card-title">${section.title}</div><ul class="tips-list">`;
-        section.tips.forEach(t => { html += `<li>${t}</li>`; });
-        html += '</ul></div>';
-      });
-      html += '</div>';
-      container.innerHTML = html;
+      let tab = 'tips';
+      const cards = (list) => list.map(section => {
+        let h = `<div class="tips-card"><div class="tips-card-title">${section.title}</div><ul class="tips-list">`;
+        section.tips.forEach(t => { h += `<li>${t}</li>`; });
+        return h + '</ul></div>';
+      }).join('');
+
+      function render() {
+        let html = '<div class="review-header"><div class="review-title">Study Hub</div><div class="review-subtitle">Tips, strategies &amp; the plan that worked</div></div>';
+        html += '<div class="review-section-tabs vocab-tabs">';
+        html += `<button class="review-section-tab${tab === 'tips' ? ' active' : ''}" data-t="tips">Tips &amp; Strategy</button>`;
+        html += `<button class="review-section-tab${tab === 'plan' ? ' active' : ''}" data-t="plan">Study Plan</button>`;
+        html += '</div><div class="review-tab-content">';
+        if (tab === 'tips') {
+          html += cards(tipsData);
+        } else {
+          html += `<div class="tips-card plan-intro"><div class="tips-card-title">&#129517; Not Sure Where to Start? Follow This Plan</div><p class="plan-intro-text">${studyPlanData.intro}</p></div>`;
+          html += cards(studyPlanData.sections);
+        }
+        html += '</div>';
+        container.innerHTML = html;
+        container.querySelectorAll('.review-section-tab').forEach(b => b.addEventListener('click', () => { tab = b.dataset.t; render(); }));
+      }
+      render();
     }
 
     function showVocabView(unitNum, setKey) {
