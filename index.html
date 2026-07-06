@@ -1519,6 +1519,25 @@
       color: var(--text-secondary);
     }
 
+    .plan-note {
+      margin-top: 12px;
+      padding: 12px 16px;
+      background: rgba(195, 177, 225, 0.16);
+      border-radius: 12px;
+      font-size: 0.86rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+    }
+
+    .plan-note-label {
+      display: block;
+      font-weight: 700;
+      color: var(--pastel-purple-dark);
+      font-size: 0.78rem;
+      letter-spacing: 0.02em;
+      margin-bottom: 4px;
+    }
+
     /* FRQ styles */
     .frq-card {
       background: var(--white-90);
@@ -4654,14 +4673,47 @@
     ];
 
     const studyPlanData = {
-      intro: 'If you\'re staring at a huge list of vocab with no idea where to begin, don\'t worry &mdash; here\'s a simple week-by-week plan you can just follow. Nothing fancy; it\'s the routine that works if you stick with it. Use as much or as little as you need.',
+      intro: 'If you don\'t know where to begin, don\'t worry &mdash; here\'s how I studied for each part. For every unit our class does a <b>Map Quiz</b>, a <b>Vocab Quiz</b>, a <b>Reading Quiz</b>, and then a <b>Final Test</b>. This walks through exactly what I did for each one. Use as much or as little as you need.',
       sections: [
-        { title: '&#127919; Rule #1: A little every day', tips: ['I studied 20&ndash;30 minutes a day instead of cramming. Short, spaced-out practice is how vocab actually sticks.', 'Even on busy days I did one <b>Speed</b> round &mdash; it kept everything fresh.'] },
-        { title: '&#128197; My weekly rhythm', tips: ['<b>Early week:</b> learn the new lesson\'s terms with <b>Flashcards</b>.', '<b>Mid week:</b> test myself with <b>Matching</b> (that\'s the test format) then <b>Multiple Choice</b>.', '<b>Before the quiz:</b> replay the terms I kept missing, then a <b>Speed</b> round to lock it in.'] },
-        { title: '&#128260; How I used this tool', tips: ['Flashcards to learn &rarr; Matching to prove I knew it &rarr; Multiple Choice to simulate the test &rarr; Speed to make it fun.', 'The weekend before a unit test, I ran the <b>All terms</b> set for the whole unit.'] },
-        { title: '&#9997;&#65039; FRQ practice', tips: ['I practiced writing to the task verbs (Identify, Describe, Explain, Compare) and always backed it up with a real-world example.', 'I timed myself so the pace of the real exam felt normal.'] },
-        { title: '&#128218; Two weeks before the exam', tips: ['Reviewed every unit\'s <b>All terms</b> set, mixing units so I wasn\'t just memorizing the order.', 'Watched a review video for each unit and re-did the map quizzes.'] },
-        { title: '&#127769; The night before', tips: ['Light review only &mdash; a couple Speed rounds &mdash; then I slept. No cramming. Rest beats panic every time.'] },
+        {
+          title: '&#128506;&#65039; Map Quizzes',
+          tips: [
+            'First, I filled out the blank map we get in class by hand.',
+            'Then I used a study tool (like the map practice in here) to drill putting the right name on each country.',
+            'When I got stuck, I looked at my own filled-out paper map to find it &mdash; instead of just revealing the answer.',
+          ],
+          note: 'Why it works: when you hunt for a place on your own map, your eyes are already searching the region where it lives &mdash; so when you spot it, your brain ties the name to the correct place and shape. That association sticks far better than being handed the answer.'
+        },
+        {
+          title: '&#128214; Vocab Quizzes',
+          tips: [
+            'I filled out the vocab words in the packet we\'re given &mdash; way easier now that you can look them up in the <b>Glossary</b> right here.',
+            'Take your time on the <b>first round</b> especially: look each one up carefully so you learn them right from the start and don\'t mix up similar terms early on.',
+            'I went through each section\'s terms, and when I really struggled I went back to the packet and read the <i>entire</i> definition, not just the first few words.',
+            'A lot of the definitions are similar, so you have to slow down and notice the tiny details that make each term different.',
+            'To keep challenging myself even while learning, I\'d sometimes look at <i>only</i> the terms (or <i>only</i> the definitions) and try to recall the other side.',
+          ],
+          note: 'Why it works: after a few rounds of this, you stop memorizing and start associating each word with its meaning &mdash; so even similar terms start to feel distinct.'
+        },
+        {
+          title: '&#128196; Reading Quizzes',
+          tips: [
+            'I read <b>5&ndash;10 pages a day</b> on the days I could, instead of leaving it all for one night.',
+            'While reading, I highlighted the major points and anything new I learned &mdash; not the filler.',
+            'I also highlighted every <b>vocab word</b> in the reading packet, because those almost always show up on the quiz.',
+            'When I finished a packet, I went back through my highlights and copied them onto the <b>notesheet</b> we\'re allowed to use on the quiz.',
+          ],
+          note: 'Why it works: highlighting keeps you actually paying attention while you read instead of zoning out, and it pulls the important stuff to the surface &mdash; so you know exactly what to put on your notesheet for the quiz.'
+        },
+        {
+          title: '&#127937; Final Test',
+          tips: [
+            '<b>1&ndash;3 days before</b> the test, I watched the individual <b>Mr. Sinn</b> videos for the unit and wrote notes on each one.',
+            'The <b>day before</b> the test, I watched his big full-unit review video and took notes on that too.',
+            'Then I kept those notes to skim right before the test.',
+          ],
+          note: 'Why it works: it\'s like having another teacher walk you through the most important things to know. Those notes were honestly a game-changer for me &mdash; when I got nervous, I knew I had the key concepts and terms right there to skim before the test, and that calmed me down.'
+        },
       ]
     };
 
@@ -4681,7 +4733,9 @@
       const cards = (list) => list.map(section => {
         let h = `<div class="tips-card"><div class="tips-card-title">${section.title}</div><ul class="tips-list">`;
         section.tips.forEach(t => { h += `<li>${t}</li>`; });
-        return h + '</ul></div>';
+        h += '</ul>';
+        if (section.note) h += `<div class="plan-note"><span class="plan-note-label">&#128161; Why it works</span>${section.note.replace(/^Why it works:\s*/, '')}</div>`;
+        return h + '</div>';
       }).join('');
 
       function render() {
