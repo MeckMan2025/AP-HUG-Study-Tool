@@ -1825,9 +1825,23 @@
       transform: translateY(-2px);
     }
   </style>
-  <!-- GoatCounter: privacy-friendly visit tracking (feeds the usage graph on the portfolio) -->
+  <!-- GoatCounter: privacy-friendly visit tracking (detailed dashboard) -->
   <script data-goatcounter="https://n1c0l3zcr3at10nz.goatcounter.com/count"
           async src="//gc.zgo.at/count.js"></script>
+  <!-- Log one visit per browser per day to Supabase — feeds the usage chart on the portfolio -->
+  <script>
+  (function(){try{
+    var k='av-'+new Date().toISOString().slice(0,10);
+    if(!localStorage.getItem(k)){
+      localStorage.setItem(k,'1');
+      fetch('https://ejmiqtizvuuilsztbafk.supabase.co/rest/v1/pageviews',{
+        method:'POST',
+        headers:{apikey:'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVqbWlxdGl6dnV1aWxzenRiYWZrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTUzNjkzMjAsImV4cCI6MjA3MDk0NTMyMH0.mHjzI8hth6JMFW6WeDg2Dy0nFOprC0Tj4p5Cjs7Aq0E',Authorization:'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVqbWlxdGl6dnV1aWxzenRiYWZrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTUzNjkzMjAsImV4cCI6MjA3MDk0NTMyMH0.mHjzI8hth6JMFW6WeDg2Dy0nFOprC0Tj4p5Cjs7Aq0E','Content-Type':'application/json',Prefer:'return=minimal'},
+        body:JSON.stringify({site:'aphug'})
+      }).catch(function(){});
+    }
+  }catch(e){}})();
+  </script>
 </head>
 <body>
   <!-- Sidebar overlay -->
